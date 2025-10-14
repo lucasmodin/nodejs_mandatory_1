@@ -1,0 +1,17 @@
+{
+    "version": "0.0.1",
+    "license": "MIT",
+    "type": "module",
+    "main": "app.js",
+    "dependencies": {
+        "express": "^5.1.0",
+        "svelte": "^5.39.13"
+    },
+    "scripts": {
+        "dev": "cross-env PORT=9090 nodemon server.js",
+        "prod": "node app.js" 
+    },
+    "devDependencies": {
+        "cross-env": "^10.1.0"
+    }
+}
