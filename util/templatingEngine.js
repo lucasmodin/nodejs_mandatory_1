@@ -8,9 +8,9 @@ export function constructPage(pageContent, options = {}) {
      .replace('$$TAB_TITLE$$', options.tabTitle || "Portfolio")
      .replace('$$CSS_LINKS$$', options.cssLinks || "")
       + pageContent
-      + footer;
+      + footer.replace('$$SCRIPT_LINKS$$', options.scriptLinks || "");
 }
 
 export function readPage(path) {
-    return fs.readFileSync(path).toString;
+    return fs.readFileSync(path).toString();
 }
