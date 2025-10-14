@@ -6,6 +6,11 @@ app.use(express.static("public"));
 
 // ---------- pages ----------------
 
+import { frontendPage } from './util/pagesUtil.js';
+
+app.get("/", (req, res) => {
+    res.send(frontendPage);
+});
 
 
 // ---------- api ------------------
