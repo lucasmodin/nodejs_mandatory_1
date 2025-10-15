@@ -35,6 +35,7 @@ export const javascriptFrontendPage = constructPage(javascriptPage, {
         <link rel="stylesheet" href="/assets/css/main.css">
         <link rel="stylesheet" href="/assets/css/header.css">
         <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/pages/javascriptPage/javascriptPage.css">
     `,
     scriptLinks: `
         <script src="/assets/js/footer.js">
