@@ -1,12 +1,12 @@
 .nav-section {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 .nav-section nav {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 /* Navigation list */
@@ -27,15 +27,18 @@
   color: var(--brand);
 }
 
-/* Dropdown */
+
 .dropdown { position: relative; }
 .dropdown-btn {
-  background: none;
-  border: 0;
-  font: inherit;
-  cursor: pointer;
+  background: transparent;
+  border: none;
   color: inherit;
-  padding: .25rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: .25rem .5rem;
+}
+.dropdown-btn:hover {
+  color: var(--brand);
 }
 .dropdown-menu {
   display: none;

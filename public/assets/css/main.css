@@ -85,6 +85,76 @@ footer.site-footer {
 }
 :focus-visible { outline: 2px solid color-mix(in oklab, var(--brand) 35%, transparent); outline-offset: 2px; }
 
+/* === Buttons (global) === */
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: .55rem .9rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .15s ease, border-color .15s ease, transform .05s ease, opacity .15s ease;
+}
+button:hover { background: color-mix(in oklab, var(--surface) 70%, var(--brand) 30%); }
+button:active { transform: translateY(1px); }
+button:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Utility: primary button */
+.btn {
+  padding: .6rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.btn:hover { opacity: .95; }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
+
+/* Variants */
+.btn.outline { background: transparent; color: var(--brand); border-color: var(--brand); }
+.btn.ghost   { background: transparent; border-color: transparent; color: var(--text); }
+.btn.subtle  { background: var(--surface); border-color: var(--border); color: var(--text); }
+
+/* Sizes */
+.btn.sm { padding: .45rem .75rem; font-weight: 600; }
+.btn.lg { padding: .8rem 1.15rem; font-size: 1.05rem; }
+
+/* Layout helpers */
+.btn.block { width: 100%; }
+
+/* Icon-only */
+.icon-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem; height: 2.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+.icon-btn:hover { background: color-mix(in oklab, var(--surface) 70%, var(--brand) 30%); }
+
+/* Focus ring (for alle knapper) */
+button:focus-visible,
+.btn:focus-visible,
+.icon-btn:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--brand) 40%, transparent);
+  outline-offset: 2px;
+}
+
+
+
+
+
+
 @media (max-width: 640px) {
   main { padding: var(--space-6) var(--space-4); }
 }
