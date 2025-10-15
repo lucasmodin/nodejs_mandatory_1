@@ -1,24 +1,45 @@
-.git-header {
-  font-size: 2rem;
-  margin-top: 1.5rem;
-  color: #2d3748;
+
+.git-page {
+  padding-block: 0.5rem;
 }
 
-.git-header-2 {
-  font-size: 1.5rem;
-  margin-top: 1.25rem;
-  color: #4a5568;
-  border-bottom: 2px solid #e2e8f0;
-  padding-bottom: 0.25rem;
+.lead .lead {
+  font-size: 1.05rem;
+}
+
+.code-group {
+  margin-top: .5rem;
+  display: grid;
+  gap: .5rem;
+  grid-template-columns: repeat(auto-fit, minmax(28ch, max-content));
+  justify-content: start;
+}
+
+.topic h2 {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: .25rem;
+  margin-top: .5rem;
 }
 
 pre {
+  display: inline-block;           
+  max-width: 100%;
+  width: fit-content;
+  min-width: 28ch;                 
+  max-inline-size: 70ch;           
   background: #1e1e1e;
   color: #e0e0e0;
-  padding: 0.75rem 1rem;
+  padding: .75rem 1rem;
   border-radius: 6px;
-  font-family: monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   overflow-x: auto;
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  margin: .25rem 0;
+  font-size: .95rem;
+}
+
+pre code { white-space: pre; }
+
+@media (max-width: 640px) {
+  .code-group { grid-template-columns: 1fr; }
+  pre { max-inline-size: 100%; }
 }
