@@ -7,6 +7,10 @@ export const frontendPage = constructPage(frontPage, {
     cssLinks: `
         <link rel="stylesheet" href="/assets/css/main.css">
         <link rel="stylesheet" href="/assets/css/header.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+    `,
+    scriptLinks: `
+        <script src="/assets/js/footer.js">
     `      
 });
 
