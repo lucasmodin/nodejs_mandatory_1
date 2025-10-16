@@ -6,15 +6,19 @@ app.use(express.static("public"));
 
 // ---------- pages ----------------
 
-import { frontendPage, gitFrontendPage } from './util/pagesUtil.js';
+import { frontendPage, gitFrontendPage, javascriptFrontendPage } from './util/pagesUtil.js';
 
 app.get("/", (req, res) => {
     res.send(frontendPage);
 });
 
 app.get("/subjects/git", (req, res) => {
-    res.send(gitFrontendPage)
-})
+    res.send(gitFrontendPage);
+});
+
+app.get("/subjects/javascript", (req, res) => {
+    res.send(javascriptFrontendPage);
+});
 
 // ---------- api ------------------
 
