@@ -45,9 +45,9 @@
                 </code></pre>
             </section>
     </section>
-    
+
     <section class="topic">
-        <h2>Variables and scope</h2>
+        <h2>Scope and variables</h2>
             <p>In javascript there are three ways to declare a variable:</p>
                 <pre><code>
                     var age = 26; 
@@ -56,8 +56,162 @@
                 </code></pre>
             <p>
                 Now, a fun fact is that <strong>'const'</strong> and <strong>'let'</strong> didn't exist before 
-                2015. It was introduced with ES6 (ECMAScript 2015)
+                2015. They were introduced with ES6 (ECMAScript 2015) mainly due to javascript not having 
+                block scoped variables before that. 
             </p>
+            <p>
+                This is quite unusual if, again, you come from Java
+                which only has block scope variables.
+            </p>
+            <p>
+                <strong>'var'</strong> has what we call <strong>function scope.</strong>
+                Meaning the variable can be accessed anywhere within a function:
+            </p>
+                <pre><code>
+                    function lovesJavascript() {
+                        if (true) {
+                            var message: "You're like me!"
+                        }
+                        console.log(message) // output: "You're like me!"
+                    }
 
+                    console.log(message) // it will throw a reference error! 
+                </code></pre>
+            <p>
+                It is pretty easy to see, that this is not optimal.
+                By having access to variables outside of their intended block,
+                you're prone to introducing bugs and unexpected behaviour.
+            </p>
+            <p>
+                The solution: <strong>let</strong> and <strong>const</strong>.
+                Both are block scoped, but there are key differences.
+                <strong>let</strong> can be updated, <strong>const</strong> can not
+            </p>
+                <pre><code>
+                    let age = 26;
+                    age = 27; //will work
+
+                    const willDie = true;
+                    willDie = false; // will throw a type error
+                </code></pre>
+            <p>
+                We prefer to use <strong>const</strong> wherever we can due to the immutability,
+                use <strong>let</strong> where we can't use const (due to reassignment), and never use <strong>var</strong>.
+            </p>
     </section>
+
+    <section class="topic">
+        <h2>Functions</h2>
+            <p>
+                Functions (as in any programming language) are reusable blocks of code.
+                Although, in Javascript, functions are what we call <strong>First class citizens</strong>.
+                This means, that they can be stored in variables, passed on as arguments, and returned from other functions.
+            </p>
+            <p>
+                Below are some examples on how to define functions in Javascript:
+            </p>
+                <pre><code>
+                    // function declaration
+                    function greet() {
+                        console.log("this reminds me of Java!") 
+                    }
+
+                    // function expression
+                    const greetAgain = function() {
+                        console.log("wait this isn't like Java...")
+                    }
+
+                    // arrow function
+                    (() => console.log("uhm, what's with the arrow???"))();
+                </code></pre>
+            <p>
+                Now the main difference between function declaration, expression and arrow functions are <strong>hoisting</strong>
+                Declarations are hoisted to the top of their scope, which means they can be called before
+                they are defined. This does not apply to function expression and arrow functions.
+            </p>
+                <pre><code>
+                    sayHello(); // this will work due to hoisting
+
+                    function sayHello() {
+                        console.log("hello");
+                    }
+
+                    sayHi(); // this will however, not work
+
+                    const sayHi = function() {
+                        console.log("hi")
+                    }
+                </code></pre>
+            <p>
+                As we mentioned before, functions can be passed as arguments. 
+                A function that is passed as an argument to another function, is called a <strong>callback function</strong>.
+            </p>
+            <p>
+                Callback functions are typically used to run code, after something else has finished.
+            </p>
+                <pre><code>
+                    function greetUser(callback) {
+                        console.log("welcome!");
+                        callback();
+                    }
+
+                    function sayGoodbye() {
+                        console.log("goodbye!");
+                    }
+
+                    greetUser(sayGoodbye);
+                    //output:
+                    //welcome!
+                    //goodbye!
+                </code></pre>
+            <p>
+                Loop methods like:
+            </p>
+                <pre><code>
+                    const numbers = [1, 2, 3, 4, 5, 6];
+
+                    // forEach - runs a function for each element
+                    numbers.forEach(num => console.log(num));
+                    // output: 1, 2, 3, 4, 5, 6
+
+                    // map - creates a new array by transforming each element
+                    const doubledNumbers = numbers.map(num => num * 2);
+                    console.log(doubledNumbers); // 2, 4, 6, 8, 10, 12
+
+                    // filter - only keeps elements that meet a condition
+                    const evenNumbers = numbers.filter(num => num % 2 === 0);
+                    console.log(evenNumbers); // 2, 4, 6
+
+                    // reduce - reduces all values to a single result
+                    const sum = numbers.reduce((acc, num) => acc + num, 0);
+                    console.log(sum); // 21
+
+                    // find - returns the first element that matches a condition
+                    const firstOverFour = numbers.find(num => num > 4);
+                    console.log(firstOverFour); // 5
+
+                    // indexOf - finds the index position of a specific value
+                    const index = numbers.indexOf(3);
+                    console.log(index); // 4
+                </code></pre>
+
+
+            <p>
+                All utilize callback functions. It is highly recommended to use these
+                rather than traditionally looping through the array with <strong>for</strong>.
+                Loop methods are more readable, safer and easier to maintain. 
+            </p>
+            <h3>8 reason to use loop methods</h3>
+                <ol>
+                    <li><strong>Brevity</strong> fewer lines of code for the same task.</li>
+                    <li><strong>Clarity</strong> communicates intent directly</li>
+                    <li><strong>No indexing</strong> no need to manually track index <strong>i</strong></li>
+                    <li><strong>Avoids confusion</strong> between 'for of/in'</li>
+                    <li><strong>Access to both value and index</strong> in one callback function </li>
+                    <li><strong>Avoids side effects</strong> doesn't mutate</li>
+                    <li><strong>Shorter and more maintainable/readable</strong></li>
+                    <li><strong>Non-mutating </strong> methods like map and filter return new a array instead of mutating original list</li>
+                </ol>
+    </section>
+
 </section>
