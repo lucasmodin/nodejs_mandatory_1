@@ -12,7 +12,8 @@ export const frontendPage = constructPage(frontPage, {
         <link rel="stylesheet" href="/assets/css/footer.css">
     `,
     scriptLinks: `
-        <script src="/assets/js/footer.js">
+        <script src="/assets/js/footer.js"></script>
+        <script src="/assets/js/landingPage.js"></script>
     `      
 });
 
@@ -25,7 +26,7 @@ export const gitFrontendPage = constructPage(gitPage, {
         <link rel="stylesheet" href="/pages/gitPage/git.css">
     `,
     scriptLinks: `
-        <script src="/assets/js/footer.js">
+        <script src="/assets/js/footer.js"></script>
     `
 });
 
@@ -38,7 +39,7 @@ export const javascriptFrontendPage = constructPage(javascriptPage, {
         <link rel="stylesheet" href="/pages/javascriptPage/javascriptPage.css">
     `,
     scriptLinks: `
-        <script src="/assets/js/footer.js">
+        <script src="/assets/js/footer.js"></script>
     `
 })
 
