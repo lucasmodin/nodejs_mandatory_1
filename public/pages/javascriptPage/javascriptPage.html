@@ -25,23 +25,22 @@
                 </ul>
             <p>Example:</p>
             <section class="code-group">
-                <pre><code>
-                    const age = 26; // primitive - type: number
-                    const name = "Lucas"; // primitive - type: string
-                    const isLearningJavascript = true; // primitive - type: boolean
-                    const user = undefined; // primitive - type: undefined
-                    const response = null; // primitive - type: null
-                    
-                    const admin = { name: "Lucas" }; //reference - type: object
-                    const subjects = ["node.js", "low level C", "IT-security"]; //reference - type: array
-                    const doSomething = () => ({}); // reference - type: function
-                </code></pre>
-                <pre></pre>
+<pre><code>
+const age = 26; // primitive - type: number
+const name = "Lucas"; // primitive - type: string
+const isLearningJavascript = true; // primitive - type: boolean
+const user = undefined; // primitive - type: undefined
+const response = null; // primitive - type: null
+
+const admin = { name: "Lucas" }; //reference - type: object
+const subjects = ["node.js", "low level C", "IT-security"]; //reference - type: array
+const doSomething = () => ({}); // reference - type: function
+</code></pre>
             </section>
             <p>You can get the data type of any variable by using the <strong>typeof</strong> operator</p>
             <section class="code-group">
                 <pre><code>
-                    console.log(typeof age); // expected output: "number"
+console.log(typeof age); // expected output: "number"
                 </code></pre>
             </section>
     </section>
@@ -49,11 +48,13 @@
     <section class="topic">
         <h2>Scope and variables</h2>
             <p>In javascript there are three ways to declare a variable:</p>
-                <pre><code>
-                    var age = 26; 
-                    let job = "developer"
-                    const name = "Lucas"
-                </code></pre>
+                <section class="code-group">
+<pre><code>
+var age = 26; 
+let job = "developer"
+const name = "Lucas"
+</code></pre>
+                </section>
             <p>
                 Now, a fun fact is that <strong>'const'</strong> and <strong>'let'</strong> didn't exist before 
                 2015. They were introduced with ES6 (ECMAScript 2015) mainly due to javascript not having 
@@ -67,16 +68,18 @@
                 <strong>'var'</strong> has what we call <strong>function scope.</strong>
                 Meaning the variable can be accessed anywhere within a function:
             </p>
-                <pre><code>
-                    function lovesJavascript() {
-                        if (true) {
-                            var message: "You're like me!"
-                        }
-                        console.log(message) // output: "You're like me!"
-                    }
+                <section class="code-group">
+<pre><code>
+function lovesJavascript() {
+if (true) {
+    var message: "You're like me!"
+}
+console.log(message) // output: "You're like me!"
+}
 
-                    console.log(message) // it will throw a reference error! 
-                </code></pre>
+console.log(message) // it will throw a reference error! 
+</code></pre>
+                </section>
             <p>
                 It is pretty easy to see, that this is not optimal.
                 By having access to variables outside of their intended block,
@@ -87,13 +90,15 @@
                 Both are block scoped, but there are key differences.
                 <strong>let</strong> can be updated, <strong>const</strong> can not
             </p>
-                <pre><code>
-                    let age = 26;
-                    age = 27; //will work
+                <section class="code-group">
+<pre><code>
+let age = 26;
+age = 27; //will work
 
-                    const willDie = true;
-                    willDie = false; // will throw a type error
-                </code></pre>
+const willDie = true;
+willDie = false; // will throw a type error
+</code></pre>
+                </section>
             <p>
                 We prefer to use <strong>const</strong> wherever we can due to the immutability,
                 use <strong>let</strong> where we can't use const (due to reassignment), and never use <strong>var</strong>.
@@ -110,38 +115,42 @@
             <p>
                 Below are some examples on how to define functions in Javascript:
             </p>
-                <pre><code>
-                    // function declaration
-                    function greet() {
-                        console.log("this reminds me of Java!") 
-                    }
+                <section class="code-group">
+<pre><code>
+// function declaration
+function greet() {
+    console.log("this reminds me of Java!") 
+}
 
-                    // function expression
-                    const greetAgain = function() {
-                        console.log("wait this isn't like Java...")
-                    }
+// function expression
+const greetAgain = function() {
+    console.log("wait this isn't like Java...")
+}
 
-                    // arrow function
-                    (() => console.log("uhm, what's with the arrow???"))();
-                </code></pre>
+// arrow function
+(() => console.log("uhm, what's with the arrow???"))();
+</code></pre>
+                </section>
             <p>
                 Now the main difference between function declaration, expression and arrow functions are <strong>hoisting</strong>
                 Declarations are hoisted to the top of their scope, which means they can be called before
                 they are defined. This does not apply to function expression and arrow functions.
             </p>
-                <pre><code>
-                    sayHello(); // this will work due to hoisting
+                <section class="code-group">
+<pre><code>
+sayHello(); // this will work due to hoisting
 
-                    function sayHello() {
-                        console.log("hello");
-                    }
+function sayHello() {
+    console.log("hello");
+}
 
-                    sayHi(); // this will however, not work
+sayHi(); // this will however, not work
 
-                    const sayHi = function() {
-                        console.log("hi")
-                    }
-                </code></pre>
+const sayHi = function() {
+    console.log("hi")
+}
+</code></pre>
+                </section>
             <p>
                 As we mentioned before, functions can be passed as arguments. 
                 A function that is passed as an argument to another function, is called a <strong>callback function</strong>.
@@ -149,52 +158,55 @@
             <p>
                 Callback functions are typically used to run code, after something else has finished.
             </p>
-                <pre><code>
-                    function greetUser(callback) {
-                        console.log("welcome!");
-                        callback();
-                    }
+                <section class="code-group">
+<pre><code>
+function greetUser(callback) {
+    console.log("welcome!");
+callback();
+}
 
-                    function sayGoodbye() {
-                        console.log("goodbye!");
-                    }
+function sayGoodbye() {
+    console.log("goodbye!");
+}
 
-                    greetUser(sayGoodbye);
-                    //output:
-                    //welcome!
-                    //goodbye!
-                </code></pre>
+greetUser(sayGoodbye);
+//output:
+//welcome!
+//goodbye!
+</code></pre>
+                </section>
             <p>
                 Loop methods like:
             </p>
-                <pre><code>
-                    const numbers = [1, 2, 3, 4, 5, 6];
+                <section class="code-group">
+<pre><code>
+const numbers = [1, 2, 3, 4, 5, 6];
 
-                    // forEach - runs a function for each element
-                    numbers.forEach(num => console.log(num));
-                    // output: 1, 2, 3, 4, 5, 6
+// forEach - runs a function for each element
+numbers.forEach(num => console.log(num));
+// output: 1, 2, 3, 4, 5, 6
 
-                    // map - creates a new array by transforming each element
-                    const doubledNumbers = numbers.map(num => num * 2);
-                    console.log(doubledNumbers); // 2, 4, 6, 8, 10, 12
+// map - creates a new array by transforming each element
+const doubledNumbers = numbers.map(num => num * 2);
+console.log(doubledNumbers); // 2, 4, 6, 8, 10, 12
 
-                    // filter - only keeps elements that meet a condition
-                    const evenNumbers = numbers.filter(num => num % 2 === 0);
-                    console.log(evenNumbers); // 2, 4, 6
+// filter - only keeps elements that meet a condition
+const evenNumbers = numbers.filter(num => num % 2 === 0);
+console.log(evenNumbers); // 2, 4, 6
 
-                    // reduce - reduces all values to a single result
-                    const sum = numbers.reduce((acc, num) => acc + num, 0);
-                    console.log(sum); // 21
+// reduce - reduces all values to a single result
+const sum = numbers.reduce((acc, num) => acc + num, 0);
+console.log(sum); // 21
 
-                    // find - returns the first element that matches a condition
-                    const firstOverFour = numbers.find(num => num > 4);
-                    console.log(firstOverFour); // 5
+// find - returns the first element that matches a condition
+const firstOverFour = numbers.find(num => num > 4);
+console.log(firstOverFour); // 5
 
-                    // indexOf - finds the index position of a specific value
-                    const index = numbers.indexOf(3);
-                    console.log(index); // 4
-                </code></pre>
-
+// indexOf - finds the index position of a specific value
+const index = numbers.indexOf(3);
+console.log(index); // 4
+</code></pre>
+                </section>
 
             <p>
                 All utilize callback functions. It is highly recommended to use these
