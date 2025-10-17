@@ -1,0 +1,45 @@
+<section class="express-page">
+    <section class="intro">
+        <h1>Express</h1>
+            <p>
+                Express.js is a minimal and flexible web framework.
+                It makes it easy to build web servers and REST APIs.
+            </p>
+            <p>
+                You could think of it as this: Express is to Node what Spring Boot is to Java.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Setting up an Express project</h2>
+            <p>
+                To use Express, install the dependency with: <code>npm install express</code>.
+            </p>
+            <p>
+                Then import and initialize it in your project:
+            </p>
+
+<pre><code>
+// app.js
+import express from 'express';
+
+const app = express();
+</code></pre>
+
+            <p>
+                Now that Express is initialized, you need to configure the port it should listen on:
+            </p>
+
+<pre><code>
+// app.js
+app.listen(8080, () => {
+    console.log("running on port 8080");
+})
+</code></pre>
+
+            <p>
+                You're now up and running with your own web server in a few lines of code, easy peasy.
+            </p>
+
+    </section>
+</section>
