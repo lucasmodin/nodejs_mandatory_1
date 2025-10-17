@@ -16,12 +16,49 @@
             <p>
                 Fun fact: according to a Stack Overflow Developer Survey, Node.js is one of
                 the most commonly used web technologies!
-                (translation: you need to learn node.js!)
+                (translation: you need to learn Node.js!)
+            </p>
+            <p>
+                Fun fact again: Google once made an entire frontend framework where you write 
+                <strong>Java</strong> to get <strong>JavaScript</strong>.
+                They called it "GWT" - I call it "solving problems that didn't exist".
+                (if they wanted type safety, why not just use TypeScript?)
             </p>
     </section>
 
     <section class="topic">
-        <h2></h2>
-    </section>
+        <h2>npm &amp; package.json</h2>
+            <p>
+                <code>npm</code> (Node Package Manager) is a tool we use to install, share and manage Javasctipt libraries.
+                It comes bundled with Node.js.
+            </p>
+            <p>
+                Every Node.js project starts with <code>npm init</code>.
+                This creates a <code>package.json</code> file that will keep track of your dependencies and scripts.
+            </p>
+            <p>
+                You could think of it as <strong>Maven's pom.xml</strong>. They both describe the projects dependencies,
+                but npm just keeps things lightweight and human readable.
+            </p>
+            <p>
+                The <code>package.json</code> is the heart of every Node project.
+                It tells npm which packages to install and defines the scripts you can run with simple commands.
+            </p>
 
+<pre><code>{
+    "name": "node-demo",
+    "version": "0.0.1",
+    "scripts": {
+        "start": "node app.js",
+        "dev": "nodemon app.js"
+    },
+    "dependencies": {
+        "express": "^5.10.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}
+</code></pre>
+    </section>
 </section>
