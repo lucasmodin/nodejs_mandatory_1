@@ -1,11 +1,12 @@
 import express from 'express';
 import path from 'path';
+import dotenv from 'dotenv';
 
 const app = express();
 app.use(express.static("public"));
+dotenv.config();
 
 // ---------- pages ----------------
-
 import { frontendPage, gitFrontendPage, javascriptFrontendPage } from './util/pagesUtil.js';
 
 app.get("/", (req, res) => {
@@ -21,9 +22,12 @@ app.get("/subjects/javascript", (req, res) => {
 });
 
 // ---------- api ------------------
+import { getRecentCommits } from './util/commitsUtil.js';
 
-
-
+app.get("/api/commits", async (req, res) => {
+    const commits = await getRecentCommits();
+    res.send({ data: commits });
+});
 
 
 

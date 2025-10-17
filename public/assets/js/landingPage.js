@@ -1,5 +1,3 @@
-const username = "lucasmodin";
-
 function createCommitItem({ repo, message, url, date }) {
     const li = document.createElement("li");
     li.innerHTML = `
@@ -15,6 +13,10 @@ function showError(targetId, message) {
     if (container) container.innerHTML = `<p class="muted">${message}</p>`;
 }
 
+function formatDate(date) {
+    return new Date(date).toLocaleString();
+}
+
 function loadRecentCommits() {
     const list = document.getElementById("commit-list");
     if (!list) {
@@ -23,41 +25,38 @@ function loadRecentCommits() {
     
     list.innerHTML = `<p class="muted">Loading commits...</p>`;
 
-    fetch(`https://api.github.com/users/${username}/events/public`)
-        .then(res => {
-            if (!res.ok) {
-                throw new Error(`HTTP code: ${res.status}`)
+    fetch("/api/commits")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP code: ${response.status}`);
             }
-            return res.json();
+            return response.json();
         })
-        .then(events => {
-            const commits = events
-                .filter(event => event.type === "PushEvent")
-                .flatMap(event => 
-                    event.payload.commits.map(commit => ({
-                        message: commit.message,
-                        repo: event.repo.name,
-                        url: `https://github.com/${event.repo.name}/commit/${commit.sha}`,
-                        date: new Date(event.created_at).toLocaleString(),
-                    }))
-                )
-                .slice(0, 5);
-            
+        .then(payload => {
+            const commits = payload.data;
             list.innerHTML = "";
-
-            if(!commits.length) {
+            if (!commits.length) {
                 showError("commit-list", "No recent commits found");
                 return;
             }
 
-            commits.forEach(commit => list.appendChild(createCommitItem(commit)));
+            commits.forEach(commit => {
+                const li = createCommitItem({
+                    repo: commit.repo,
+                    message: commit.message,
+                    url: commit.url,
+                    date: formatDate(commit.date)
+                });
+                list.appendChild(li);
+            });
         })
         .catch(error => {
-            console.error("commit fetch failed:", error);
-            showError("commit-list", "Could not load commits");
-        });
+            console.log("commit fetch failed:", error);
+            showError("commit-list", "could not load commits");
+        })
+
 }
 
-document.addEventListener("DOMContentLoaded", ()=> {
+document.addEventListener("DOMContentLoaded", () => {
     loadRecentCommits();
 })

@@ -1,18 +1,10 @@
 const USER = process.env.GITHUB_USER || "lucasmodin";
-const TOKEN = process.env.GITHUB_TOKEN || "";
-
-let cache = { data: null, ts: 0};
-const TimeToLiveMs = 60 * 1000;
 
 export async function getRecentCommits(limit = 5) {
-    if (cache.data && Date.now() - cache.ts < TimeToLiveMs) {
-        return Promise.resolve(cache.data.slice(0, limit));
-    }
+   
+    const url = `https://api.github.com/users/${USER}/events/public`;
 
-    const headers = TOKEN ? { Authorization: `Bearer ${TOKEN}` } : {};
-    const url = `https://api.github.com/users/${USER}/events/public?_=${Date.now()}`;
-
-    return fetch(url, { headers })
+    return fetch(url)
         .then(res => {
             if (!res.ok) {
                 throw new Error(`Github HTTP code: ${res.status} ${res.statusText}`);
@@ -30,7 +22,6 @@ export async function getRecentCommits(limit = 5) {
                         date: new Date(event.created_at).toISOString(),
                     }))
                 );
-            cache = { data: commits, ts: Date.now()};
             return commits.slice(0, limit);
         })
         .catch(error => {
