@@ -60,5 +60,110 @@
     }
 }
 </code></pre>
+
+            <p>
+                Once defined, use <code>npm install</code> or the shorthand <code>npm i</code>
+                 to install the projects dependencies.
+            </p>
+            <p>
+                To summarize: dependencies are packages your project needs to run, 
+                while devDependencies are the tools you use during coding like nodemon or testing libraries.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Nodemon</h2>
+            <p>
+               Normally, when you would like to run your project, you'd write <code>node app.js</code> 
+               every time you'd made a change.
+            </p>
+            <p>
+                That's great and all, for about 5 minutes. Then it gets old fast.
+            </p>
+            <p>
+                This is where Nodemon comes in. Made a change? Nodemon simply restarts your program
+            </p>
+            <p>
+                As stated before, Nodemon is installed as devDependency since you don't need it in production.
+            </p>
+            <p>
+                Simply run <code>npm i -D nodemon</code> (the flag -D marks it as a devDependency).
+            </p>
+            <p>
+                Once installed, you can add a <code>dev</code> script to your package.json:
+            </p>
+
+<pre><code>"scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+}</code></pre>
+
+            <p>
+                Now, you can simply run: <code>npm run dev</code>
+            </p>
+            <p>
+                Nodemon will now keep an eye out for changes in your files
+                and restart your app every time you make a change/hit save.
+            </p>
+            <p>
+                It is very useful for small projects but can become inefficient in large applications.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>CommonJS &amp; ES Modules</h2>
+            <p>
+                Node.js supports two different module systems: <code>CommonJS</code> and <code>ES Modules</code>.
+                Basically, they do the same thing - split your code into smaller, reusable files. Just with different syntax.
+            </p>
+            <p>
+                CommonJS is the original Node.js module system and it uses <code>require()</code> to import,
+                and <code>module.exports</code> to export code.
+            </p>
+
+<pre><code>
+// iLoveJs.js
+function sayILoveJs() {
+    console.log("i love JS!");
+}
+module.exports = { sayILoveJs };
+
+// app.js
+const { sayILoveJs } = require('./iLoveJs.js');
+
+sayILoveJs();
+</code></pre>
+
+            <p>
+                On the other hand, ES Modules uses <code>import</code> and <code>export</code> instead
+            </p>
+
+<pre><code>
+// iLoveJs.js
+export function sayILoveJs() {
+    console.log("i love JS!");
+}
+
+// app.js
+import { sayILoveJs } from './iLoveJs'
+
+sayILoveJs();
+</code></pre>
+
+            <p>
+                Now, i know what you're thinking: if they they're doing the same thing, why have two different ways to do it?
+            </p>
+            <p>
+                CommonJS came first. It was designed for Node.js, and worked server side.
+                Some time later, Javascript introduced a module system called ES Modules 
+                and it became the official standard for both browsers (client side) and Node.js (server side).
+            </p>
+            <p>
+                ES modules are resolved <strong>asynchronously</strong>,
+                while CommonJS loads modules <strong>synchronously</strong>.
+            </p>
+            <p>
+                In more modern projects, you'll mostly use ES Modules.
+            </p>
     </section>
 </section>
