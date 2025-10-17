@@ -1,10 +1,9 @@
 import express from 'express';
 import path from 'path';
-import dotenv from 'dotenv';
 
 const app = express();
 app.use(express.static("public"));
-dotenv.config();
+
 
 // ---------- pages ----------------
 import { frontendPage, gitFrontendPage, javascriptFrontendPage } from './util/pagesUtil.js';

@@ -66,6 +66,10 @@
                  to install the projects dependencies.
             </p>
             <p>
+                The installed dependencies will be placed in a folder called <code>node_modules</code>.
+                You never push this to Github. Always add it to your <code>.gitignore</code> file.
+            </p>
+            <p>
                 To summarize: dependencies are packages your project needs to run, 
                 while devDependencies are the tools you use during coding like nodemon or testing libraries.
             </p>
@@ -168,14 +172,48 @@ sayILoveJs();
     </section>
 
     <section class="topic">
-        <h2>Environment Variables (.env)</h2>
+        <h2>Environment Variables</h2>
             <p>
                 Environment variables store things like API keys, database URLs/passwords etc.
                 It is extremely important that these are not hardcoded in your files.
             </p>
             <p>
-                In Node.js we use a <code>.env</code> file 
+                In Node.js there are several ways to do this. You could do it natively with <code>process.env</code>
             </p>
+
+<pre><code>
+    const API_KEY = process.env.YOUR_API_KEY;
+</code></pre>
+
+            <p>
+                And then you define these in your terminal:
+            </p>
+
+<pre><code>
+    $env:YOUR_API_KEY="efgh12" node app.js
+</code></pre>
+
+            <p>The other way is to use a library like <code>dotenv</code>, but I won't elaborate further on this.</p>
+    </section>
+
+    <section class="topic">
+        <h2>Built in modules</h2>
+            <p>
+                Node.js comes with built in modules that you can use without installing anything.
+                This includes <code>fs</code> (file system) and <code>path</code> (file paths).
+            </p>
+
+<pre><code>
+// reading a file
+import fs from 'fs';
+
+const data = fs.readFileSync("./components/header.html").toString();
+</code></pre>
+
+            <p>
+                This code reads the content of the file, and converts it to a string.
+            </p>
+
     </section>
 
 </section>
