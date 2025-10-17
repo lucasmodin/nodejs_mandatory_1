@@ -101,4 +101,92 @@ app.use(express.json())
             </p>
 
     </section>
+
+    <section class="topic">
+        <h2>Path Variables &amp; Query Parameters</h2>
+            <p>
+                If we wanted to, let's say, get a specific friend from the list,
+                we could include their ID in the URL using a <strong>path variable</strong>.
+            </p>
+
+<pre><code>
+// path variable example
+app.get("/api/friends/:id", (req, res) => {
+    const friendsId = Number(req.params.id);
+    const foundFriend = friends.find(friend => friend.id === friendsId);
+    res.send({ data: foundFriend });
+})
+</code></pre>
+            <p>
+                The colon <code>:</code> marks <code>id</code> as a dynamic value.
+            </p>
+            <p>
+                It's important to note, that the path variables are always strings.
+                If your ID is a number, you need to parse it using <strong>Number()</strong>.
+            </p>
+            <p>
+                On the other hand, we have <strong>query parameters</strong>.
+                If we wanted to find our friend named John, we could do so by including 
+                <code>Mark</code> in our URL:
+            </p>
+
+<pre><code>
+// request: /api/friends/?name=mark
+app.get("/api/friends", (req, res) => {
+    const { name } = req.query;
+    const foundFriend = friends.find(friend => {
+        return friend.name === name;
+    });
+    res.send({ data: foundFriend });
+});
+</code></pre>
+
+            <p>
+                The route will check the <code>name</code> query parameter in the URL,
+                and search the friends list for a match and then return it to the client.
+            </p>
+            <p>
+                Now, if our friends list didn't have Mark in it, we would be in a bit of a pickle.
+                To handle this, we could add a simple check and return the HTTP status code: <strong>404 Not Found</strong>.
+            </p>
+
+<pre><code>
+// request: /api/friends/?name=mark
+app.get("/api/friends", (req, res) => {
+    const { name } = req.query;
+    const foundFriend = friends.find(friend => {
+        return friend.name === name;
+    });
+
+    if(!foundFriend) {
+        return res.status(404).send({ error: "friend not found"});
+    }
+
+    res.send({ data: foundFriend });
+});
+</code></pre>
+
+            <p>
+                The <code>res.status</code> let's you send HTTP status codes with your response
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Static Files</h2>
+            <p>
+                Static files are files that don't change when your app runs.
+                This could be images, CSS, and client sided Javascript.
+            </p>
+            <p>
+                You can serve these directly by using:
+            </p>
+
+<pre><code>
+app.use(express.static("public"))
+</code></pre>
+
+            <p>
+                This tells Express to look for static assets inside your <code>public</code> folder.
+            </p>
+    </section>
 </section>
