@@ -4,6 +4,7 @@ const frontPage = readPage("./public/pages/frontend/index.html");
 const gitPage = readPage("./public/pages/gitPage/git.html");
 const javascriptPage = readPage("./public/pages/javascriptPage/javascriptPage.html");
 const expressPage = readPage("./public/pages/expressPage/expressPage.html");
+const restPage = readPage("./public/pages/restPage/restPage.html");
 
 export const frontendPage = constructPage(frontPage, {
     tabTitle: "Portfolio | Welcome",
@@ -55,5 +56,18 @@ export const expressFrontendPage = constructPage(expressPage, {
     scriptLinks: `
         <script src="/assets/js/footer.js"></script>
     `    
+});
+
+export const restFrontendPage = constructPage(restPage, {
+    tabTitle: "REST API",
+    cssLinks: `
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/header.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/pages/restPage/restPage.css">
+    `,
+    scriptLinks: `
+        <script src="/assets/js/footer.js"></script>
+    `
 });
 
