@@ -34,11 +34,70 @@ const app = express();
 // app.js
 app.listen(8080, () => {
     console.log("running on port 8080");
-})
+});
 </code></pre>
 
             <p>
                 You're now up and running with your own web server in a few lines of code, easy peasy.
+            </p>
+
+    </section>
+
+    <section class="topic">
+        <h2>Routes</h2>
+            <p>
+                Routes defines how your app responds to different HTTP requests.
+                The HTTP methods are as follows: GET, POST, PUT, PATCH and DELETE
+            </p>
+            <p>
+                Im not gonna explain them in detail here (see REST page),
+                but here are some examples on how to use them in your app:
+            </p>
+
+<pre><code>
+// GET
+app.get("/api/friends", (req, res) => {
+    const friends = ["John", "Mark", "Oliver"];
+    res.send({ data: friends });
+});
+</code></pre>
+
+            <p>
+                This route handles a GET request to <code>/api/friends</code>.
+                When the client calls this endpoint, the server will respond with a data object containing the list.
+            </p>
+            <p>
+                Now, if the client wanted to add a new friend to the list,
+                it would look something like this:
+            </p>
+
+<pre><code>
+// POST
+app.post("/api/friends", (req, res) => {
+    const newFriend = req.body.name;
+    friends.push(newFriend);
+    res.status(201).send({ message: `${newFriend} added` })
+})
+</code></pre>
+
+            <p>
+                We use <code>req</code> (request) to access data sent from the client.
+                In this case <code>req.body.name</code> from the request body.
+            </p>
+            <p>
+                The <code>res</code> (response) is the data we send back to the client.
+                Here we use the status code 201 to indicate success and <code>send</code> to return a message.
+            </p>
+            <p>
+                Now, for POST request, it is important to include:
+            </p>
+
+<pre><code>
+app.use(express.json())
+</code></pre>
+
+            <p>
+                This allows Express to read JSON data from the request (body parsing).
             </p>
 
     </section>
