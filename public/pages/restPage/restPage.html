@@ -2,7 +2,10 @@
     <section class="intro">
         <h1>REST API</h1>
             <p>
-                REST is a set of guidelines for building web API's.
+                REST stands for "<strong>Re</strong>presentation <strong>S</strong>tate <strong>T</strong>ransfer"
+            </p>
+            <p>
+                It is a set of guidelines for building web API's.
                 Boiled down, it is basically exposing <strong>resources</strong> (always in nouns),
                 over HTTP using standard methods: <strong>GET, POST, PUT, PATCH, DELETE</strong> and return data in JSON.
             </p>
@@ -52,24 +55,95 @@ https://www.google.com/search?h1=en&q=pay%20attention
 
     </section>
 
+    <section class="topic">
+        <h2>State in REST</h2>
+            <p>
+                When a client makes a request to the server, it never remembers the client's state between requests.
+                Every request is treated as something completely new.
+            </p>
+            <p>
+                Therefore, it is important that every request must contain everything 
+                the server needs to process it.
+            </p>
+            <p>
+                This is called <strong>statelessness</strong> and it keeps the server simple and scalable.
+                It doesn't need to track sessions or remember user history.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Resource naming &amp; URL Design</h2>
+            <p>
+                When you expose an API, it is important to model the URL correctly.
+                In REST we use <strong>nouns</strong>, not verbs.
+                Translated: Resources, NOT actions.
+            </p>
+
+<pre><code>
+// example of good practice
+GET /api/friends
+GET /api/friends/5
+GET /api/friends/5/posts
+GET /api/friends/5/posts/2
+</code></pre>
+
+<pre><code>
+// example of bad practice
+GET  /api/getFriends
+POST /api/createFriend
+PUT  /api/updateFriend/3
+</code></pre>
+
+            <p>
+                The idea is, that the endpoint represents a <strong>resource</strong> not an action.
+                But then how do he we show what action we want to perform?
+            </p>
+            <p>
+                We let the <strong>HTTP methods</strong> show intent. GET, POST, PUT etc. describe what we want to do with the resource.
+            </p>
+            <p>
+                Now, in my earlier example <code>GET /api/friends/5/posts</code> you'll notice that there are <strong>two resources</strong>.
+                There's <strong>friends</strong> and <strong>posts</strong>. Since posts belongs to a specific friend, 
+                this is called a <strong>sub-resource</strong>.
+            </p>
+            <p>
+                This relationship is represented in the URL, and makes it clear which resource belongs to which.
+            </p>
+    </section>
 
     <section class="topic">
         <h2>HTTP Methods</h2>
             <p>
-                We follow an ordering of the HTTP methods:
+                We follow an ordering of the HTTP methods.
+                This is mainly due to how a user naturally would interact with a webapp.
             </p>
 
 <pre><code>
-GET    - retrieve data
-POST   - create new data
-PUT    - replace existing data
-PATCH  - update parts of existing data
-DELETE - remove data
+1. GET    - retrieve data
+2. POST   - create new data
+3. PUT    - replace existing data
+4. PATCH  - update parts of existing data
+5. DELETE - remove data
 </code></pre>
 
             <p>
                 If you look at these methods and think: "that seems familiar" - that's because it is.
                 The methods can be directly mapped to the CRUD operations: <strong>Create, Read, Update, Delete</strong>.
+            </p>
+            <p>
+                Now, in REST we talk about something called <strong>idempotency</strong>.
+                It transletes to: an operation that delivers the same result no matter how many times you execute it.
+            </p>
+            <p>
+                GET, PUT and DELETE are idempotent and that is important because
+                calling them multiple times won't change the outcome.
+                However, POST is not. Calling it multiple times will result in multiple
+                resources being created.
+            </p>
+            <p>
+                In REST, we also talk about <strong>safe</strong> methods.
+                A safe method is defined by a method that does not alter nor create resources.
+                The only safe method we have is GET, since it is a read-only method.
             </p>
     </section>
 </section>
