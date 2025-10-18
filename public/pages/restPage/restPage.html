@@ -56,6 +56,42 @@ https://www.google.com/search?h1=en&q=pay%20attention
     </section>
 
     <section class="topic">
+        <h2>HTTP Methods</h2>
+            <p>
+                We follow an ordering of the HTTP methods.
+                This is mainly due to how a user naturally would interact with a webapp.
+            </p>
+
+<pre><code>
+1. GET    - retrieve data
+2. POST   - create new data
+3. PUT    - replace existing data
+4. PATCH  - update parts of existing data
+5. DELETE - remove data
+</code></pre>
+
+            <p>
+                If you look at these methods and think: "that seems familiar" - that's because it is.
+                The methods can be directly mapped to the CRUD operations: <strong>Create, Read, Update, Delete</strong>.
+            </p>
+            <p>
+                Now, in REST we talk about something called <strong>idempotency</strong>.
+                It transletes to: an operation that delivers the same result no matter how many times you execute it.
+            </p>
+            <p>
+                GET, PUT and DELETE are idempotent and that is important because
+                calling them multiple times won't change the outcome.
+                However, POST is not. Calling it multiple times will result in multiple
+                resources being created.
+            </p>
+            <p>
+                In REST, we also talk about <strong>safe</strong> methods.
+                A safe method is defined by a method that does not alter nor create resources.
+                The only safe method we have is GET, since it is a read-only method.
+            </p>
+    </section>
+
+    <section class="topic">
         <h2>State in REST</h2>
             <p>
                 When a client makes a request to the server, it never remembers the client's state between requests.
@@ -101,6 +137,16 @@ PUT  /api/updateFriend/3
             <p>
                 We let the <strong>HTTP methods</strong> show intent. GET, POST, PUT etc. describe what we want to do with the resource.
             </p>
+
+<pre><code>
+GET    /api/friends
+GET    /api/friends/2
+POST   /api/friends
+PUT    /api/friends/2
+PATCH  /api/friends/2
+DELETE /api/friends/2
+</code></pre>
+
             <p>
                 Now, in my earlier example <code>GET /api/friends/5/posts</code> you'll notice that there are <strong>two resources</strong>.
                 There's <strong>friends</strong> and <strong>posts</strong>. Since posts belongs to a specific friend, 
@@ -111,39 +157,20 @@ PUT  /api/updateFriend/3
             </p>
     </section>
 
-    <section class="topic">
-        <h2>HTTP Methods</h2>
-            <p>
-                We follow an ordering of the HTTP methods.
-                This is mainly due to how a user naturally would interact with a webapp.
-            </p>
+    <section topic="topic">
+        <h2>HTTP Status Codes</h2>
 
-<pre><code>
-1. GET    - retrieve data
-2. POST   - create new data
-3. PUT    - replace existing data
-4. PATCH  - update parts of existing data
-5. DELETE - remove data
-</code></pre>
+    </section>
 
+    <section topic="topic">
+        <h2>Richardson Maturity Model</h2>
             <p>
-                If you look at these methods and think: "that seems familiar" - that's because it is.
-                The methods can be directly mapped to the CRUD operations: <strong>Create, Read, Update, Delete</strong>.
+                The Richardson Maturity Model is a way of measuring how RESTful an API is.
+                It contains 4 levels, from 0 to 3, where each level adds more on the previous.
             </p>
             <p>
-                Now, in REST we talk about something called <strong>idempotency</strong>.
-                It transletes to: an operation that delivers the same result no matter how many times you execute it.
-            </p>
-            <p>
-                GET, PUT and DELETE are idempotent and that is important because
-                calling them multiple times won't change the outcome.
-                However, POST is not. Calling it multiple times will result in multiple
-                resources being created.
-            </p>
-            <p>
-                In REST, we also talk about <strong>safe</strong> methods.
-                A safe method is defined by a method that does not alter nor create resources.
-                The only safe method we have is GET, since it is a read-only method.
+                
             </p>
     </section>
+
 </section>
