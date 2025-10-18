@@ -3,6 +3,7 @@ import { readPage, constructPage } from './templatingEngine.js';
 const frontPage = readPage("./public/pages/frontend/index.html");
 const gitPage = readPage("./public/pages/gitPage/git.html");
 const javascriptPage = readPage("./public/pages/javascriptPage/javascriptPage.html");
+const nodePage = readPage("./public/pages/nodePage/nodePage.html");
 const expressPage = readPage("./public/pages/expressPage/expressPage.html");
 const restPage = readPage("./public/pages/restPage/restPage.html");
 
@@ -44,6 +45,19 @@ export const javascriptFrontendPage = constructPage(javascriptPage, {
         <script src="/assets/js/footer.js"></script>
     `
 });
+
+export const nodeFrontendPage = constructPage(nodePage, {
+    tabTitle: "Node.js",
+    cssLinks: `
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/header.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/pages/nodePage/nodePage.css">
+    `,
+    scriptLinks: `
+        <script src="/assets/js/footer.js"></script>
+    `
+})
 
 export const expressFrontendPage = constructPage(expressPage, {
     tabTitle: "Express.js",

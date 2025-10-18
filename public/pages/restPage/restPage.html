@@ -1,0 +1,75 @@
+<section class="rest-page">
+    <section class="intro">
+        <h1>REST API</h1>
+            <p>
+                REST is a set of guidelines for building web API's.
+                Boiled down, it is basically exposing <strong>resources</strong> (always in nouns),
+                over HTTP using standard methods: <strong>GET, POST, PUT, PATCH, DELETE</strong> and return data in JSON.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Anatomy of a URL</h2>
+            <p>
+                Before we dive deeper into REST, it is important to understand the anatomy of an URL:
+            </p>
+
+<pre><code>
+https://www.google.com/search?h1=en&q=pay%20attention
+|             |        |
+|             |        └─ endpoint
+|             └────────── domain
+└──────────────────────── protocol  
+</code></pre>
+
+            <p>
+                The <strong>protocol</strong> (http/https) defines how the client communicates with the server.
+            </p>
+            <p>
+                The <strong>domain</strong>, where "www" is the <strong>sub-level</strong> and ".com" is the <strong>top-level</strong>, points to the server location.
+            </p>
+            <p>
+                The <strong>endpoint</strong> specifies the resource you want to access.
+            </p>
+            <p>
+                The endpoint could look something like this:
+            </p>
+
+<pre><code>
+/search?h1=en&q=pay%20attention
+|      |______________________|
+|                └ query string
+└───────────────── path
+</code></pre>
+
+            <p>
+                The <strong>query</strong> contains query parameters seperated by <code>&amp;</code>
+                and starts with a <code>?</code>.
+            </p>
+            <p>
+                The <strong>path</strong> identifies a specific resource.
+            </p>
+
+    </section>
+
+
+    <section class="topic">
+        <h2>HTTP Methods</h2>
+            <p>
+                We follow an ordering of the HTTP methods:
+            </p>
+
+<pre><code>
+GET    - retrieve data
+POST   - create new data
+PUT    - replace existing data
+PATCH  - update parts of existing data
+DELETE - remove data
+</code></pre>
+
+            <p>
+                If you look at these methods and think: "that seems familiar" - that's because it is.
+                The methods can be directly mapped to the CRUD operations: <strong>Create, Read, Update, Delete</strong>.
+            </p>
+    </section>
+</section>
