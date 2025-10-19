@@ -12,6 +12,10 @@
 
     <section class="topic">
         <h2>Get started</h2>
+            <p>
+                Every Git project starts by creating or cloning a repository.
+                A repository is a folder that Git tracks changes in.
+            </p>
             <div class="code-group">
                 <pre><code>git init</code></pre>
                 <pre><code>git clone &lturl&gt</code></pre> <!-- &lt and &gt are escape characters-->
@@ -20,6 +24,10 @@
 
     <section class="topic">
         <h2>Prepare to commit</h2>
+            <p>
+                Before saving your changes you need to tell Git which files to include.
+                This is done by using the <strong>staging area</strong>.
+            </p>
             <div class="code-group">
                 <pre><code>git add &ltfile&gt</code></pre>
                 <pre><code>git add .</code></pre>
@@ -31,10 +39,45 @@
 
     <section class="topic">
         <h2>Make commits</h2>
+            <p>
+                A <strong>commit</strong> is like a snapshot of your code.
+                It stores all staged changes with a short message describing what work was done.
+            </p>
             <div class="code-group">
                 <pre><code>git commit</code></pre>
                 <pre><code>git commit -m 'message'</code></pre>
                 <pre><code>git commit -am 'message'</code></pre>
             </div>
     </section>
+
+    <section class="topic">
+        <h2>Branch</h2>
+            <p>
+                Branches let you work on new features or fixes
+                without changing the main code (usually called <strong>main</strong> or <strong>master</strong>).
+            </p>
+            <div class="code-group">
+                <pre><code>git branch</code></pre>
+                <pre><code>git branch &ltname&gt</code></pre>
+                <pre><code>git checkout &ltname&gt</code></pre>
+                <pre><code>git checkout -b &ltname&gt</code></pre>
+                <pre><code>git merge &ltname&gt</code></pre>
+            </div>
+            <p>
+                Use <strong>git branch</strong> to list branches,
+                <strong>git checkout</strong> to switch,
+                and <strong>git merge</strong> to combine changes.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Push</h2>
+            <p>
+                After committing your changes, you can upload them
+                to a remote repository like GitHub using <strong>push</strong>.
+            </p>
+            <div class="code-group">
+                <pre><code>git push</code></pre>
+                <pre><code>git push origin &ltbranch&gt</code></pre>
+        </section>
 </section>
