@@ -106,6 +106,32 @@ willDie = false; // will throw a type error
     </section>
 
     <section class="topic">
+        <h2>Equality and coercion</h2>
+            <p>
+                Javascript has two ways to compare values: 
+            </p>
+<pre><code>
+== // loose equality
+
+=== // strict equality
+</code></pre>
+
+            <p>
+                <strong>Loose equality</strong> tries to convert to the same data type before comparing,
+                while <strong>Strict equality</strong> compares both the type and value.
+            </p>
+
+<pre><code>
+"3" == 3 //true
+"3" === 3 //false
+</code></pre>
+
+            <p>
+                Don't confuse this with Java's syntax. Always use strict equality to avoid unexpected results.
+            </p>
+    </section>
+
+    <section class="topic">
         <h2>Functions</h2>
             <p>
                 Functions (as in any programming language) are reusable blocks of code.
@@ -271,7 +297,6 @@ fetch("https://jsonplaceholder.typicode.com/users")
     .then(data => console.log("users:", data))
     .catch(error => console.log("error:", error));
 </code></pre>
-
             <p>
                 This piece of code might look like it runs synchronously, but it doesn't.
                 The <strong>fetch()</strong> function is asynchronous.
