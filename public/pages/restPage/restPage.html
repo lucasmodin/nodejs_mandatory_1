@@ -159,7 +159,38 @@ DELETE /api/friends/2
 
     <section topic="topic">
         <h2>HTTP Status Codes</h2>
+            <p>
+                Every response from a REST API includes a status code.
+                The code returned indicate if a specific request has been successfully completed.
+            </p>
 
+<pre><code>
+1. informational responses (100-199)
+2. successful respones     (200-299)
+3. redirection messages    (300-399)
+4. client error responses  (400-499)
+5. server error responses  (500-599)
+</code></pre>
+
+            <p>Now, you don't need to know every singe status code, so here are some of the most common:</p>
+
+<pre><code>
+200 OK                    - Request succeeded
+201 Created               - Resource created
+204 No content            - Request sucess but no data returned
+
+400 Bad request           - Invalid request or missing data
+401 Unauthorized          - Missing or invalid authentication
+403 Forbidden             - Not allowed to access the resource
+404 Not found             - The resource could not be found
+
+500 Internal Server Error - Something went wrong on the server
+</code></pre>
+
+            <p>
+                It is generally good practice to return appropriate status codes with your responses.
+                It helps the client understand what happened (and makes debugging ALOT easier).
+            </p>
     </section>
 
     <section topic="topic">
@@ -168,9 +199,59 @@ DELETE /api/friends/2
                 The Richardson Maturity Model is a way of measuring how RESTful an API is.
                 It contains 4 levels, from 0 to 3, where each level adds more on the previous.
             </p>
+            <h3>Level 0: The swamp of POX</h3>
             <p>
-                
+                This is the lowest level. Typically it consists of a single URI (uniform resource identifier)
+                supporting all the CRUD operations. The HTTP method used is <strong>POST</strong>
             </p>
-    </section>
 
+<pre><code>     
+/bookingService - POST - retrieve, add/cancel 
+                    for destinations/hotels/rooms
+</code></pre>
+
+            <h3>Level 1: Resources</h3>
+            <p>
+                Level 1 introduces resources and splits the URI into multiple
+                individual URIs. Although, the HTTP methods used is still POST.
+            </p>
+
+<pre><code>
+/bookingDestination - POST - retrieve dest.
+/bookingReservation - POST - add/cancel res.
+/bookingRooms       - POST - add/cancel req. to res.
+/bookingFeedback    - POST - leave feedback
+</code></pre>
+
+            <h3>Level 2: HTTP verbs</h3>
+            <p>
+                Level 2 makes use of the HTTP verbs which allows for further specialization
+                of the resource. Each resource now has its own endpoint, and the HTTP method describes the action.
+            </p>
+
+<pre><code>
+/destinations - GET - retrieve
+/reservations - GET - retrieve
+/reservations - POST - add/cancel
+/rooms        - DELETE - remove
+</code></pre>
+
+            <h3>Level 3: Hypermedia Controls</h3>
+            <p>
+                This level introduces HATEOAS (Hypermedia As The Engine Of Application).
+                It basically adds links to related resources, so the client can discover what to do next.
+            </p>
+
+<pre><code>
+{
+    "id": 1,
+    "destination": "Copenhagen",
+    "_links_": {
+        "self": { "href: "/bookings/1"},
+        "cancel": { "href": "/bookings/1/cancel"},
+        "feedback": { "href": "/bookings/1/feedback"}
+    }
+}
+</code></pre>
+    </section>
 </section>
