@@ -6,6 +6,7 @@ const javascriptPage = readPage("./public/pages/javascriptPage/javascriptPage.ht
 const nodePage = readPage("./public/pages/nodePage/nodePage.html");
 const expressPage = readPage("./public/pages/expressPage/expressPage.html");
 const restPage = readPage("./public/pages/restPage/restPage.html");
+const ssrCsrPage = readPage("./public/pages/ssrCsrPage/ssrCsrPage.html");
 
 export const frontendPage = constructPage(frontPage, {
     tabTitle: "Portfolio | Welcome",
@@ -84,4 +85,17 @@ export const restFrontendPage = constructPage(restPage, {
         <script src="/assets/js/footer.js"></script>
     `
 });
+
+export const ssrCsrFrontendPage = constructPage(ssrCsrPage, {
+    tabTitle: "SSR & CSR",
+    cssLinks: `
+        <link rel="stylesheet" href="/assets/css/main.css">
+        <link rel="stylesheet" href="/assets/css/header.css">
+        <link rel="stylesheet" href="/assets/css/footer.css">
+        <link rel="stylesheet" href="/pages/ssrCsrPage/ssrCsrPage.css">
+    `,
+    scriptLinks: `
+        <script src="/assets/js/footer.js"></script>
+    `
+})
 

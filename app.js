@@ -6,7 +6,7 @@ app.use(express.static("public"));
 
 
 // ---------- pages ----------------
-import { frontendPage, gitFrontendPage, javascriptFrontendPage, nodeFrontendPage, expressFrontendPage, restFrontendPage } from './util/pagesUtil.js';
+import { frontendPage, gitFrontendPage, javascriptFrontendPage, nodeFrontendPage, expressFrontendPage, restFrontendPage, ssrCsrFrontendPage } from './util/pagesUtil.js';
 
 app.get("/", (req, res) => {
     res.send(frontendPage);
@@ -30,6 +30,10 @@ app.get("/subjects/express", (req, res) => {
 
 app.get("/subjects/rest", (req, res) => {
     res.send(restFrontendPage);
+});
+
+app.get("/subjects/ssr-csr", (req, res) => {
+    res.send(ssrCsrFrontendPage);
 });
 
 // ---------- api ------------------
