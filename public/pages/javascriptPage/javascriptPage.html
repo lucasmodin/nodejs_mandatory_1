@@ -47,7 +47,7 @@ console.log(typeof age); // expected output: "number"
 
     <section class="topic">
         <h2>Scope and variables</h2>
-            <p>In javascript there are three ways to declare a variable:</p>
+            <p>In Javascript there are three ways to declare a variable:</p>
                 <section class="code-group">
 <pre><code>
 var age = 26; 
@@ -56,8 +56,8 @@ const name = "Lucas"
 </code></pre>
                 </section>
             <p>
-                Now, a fun fact is that <strong>'const'</strong> and <strong>'let'</strong> didn't exist before 
-                2015. They were introduced with ES6 (ECMAScript 2015) mainly due to javascript not having 
+                Now, a fun fact is that <strong>const</strong> and <strong>let</strong> didn't exist before 
+                2015. They were introduced with ES6 (ECMAScript 2015) mainly due to Javascript not having 
                 block scoped variables before that. 
             </p>
             <p>
@@ -65,7 +65,7 @@ const name = "Lucas"
                 which only has block scope variables.
             </p>
             <p>
-                <strong>'var'</strong> has what we call <strong>function scope.</strong>
+                <strong>var</strong> has what we call <strong>function scope.</strong>
                 Meaning the variable can be accessed anywhere within a function:
             </p>
                 <section class="code-group">
@@ -224,6 +224,61 @@ console.log(index); // 4
                     <li><strong>Shorter and more maintainable/readable</strong></li>
                     <li><strong>Non-mutating </strong> methods like map and filter return new a array instead of mutating original list</li>
                 </ol>
+    </section>
+
+    <section class="topic">
+        <h2>Fetch</h2>
+            <p>
+                When you run Javascript code - it runs from top to bottom, as you would expect.
+                Sometimes though, you need to wait for something slow like a network request.
+                This is what we call <strong>asynchronous code</strong>.
+            </p>
+            <p>
+                Now, you might remember that we mentioned <strong>callback functions</strong> before.
+                Callbacks were the original way to handle asynchronous code. 
+                That being code that needs to be run after something else has finished.
+            </p>
+            <p>
+                Before 2017, Javascript programmers were deep in the trenches of what we call <strong>callback hell</strong>.
+                This term refers to a situation where callbacks are nested <strong>inside</strong> callbacks,
+                making the code messy and difficult to read.
+            </p>
+            <p>
+                To solve this Javascript introduced <strong>Promises</strong>, and later <strong>Async/Await</strong>.
+            </p>
+            <p>
+                A <strong>Promise</strong> is a Javascript object that represents
+                a value that might not be available yet.
+            </p>
+            <p>
+                Now, a Promise can be in one of three states: <strong>pending</strong>,
+                <strong>fulfilled</strong> or <strong>rejected</strong>.
+            </p>
+            <p>
+                Let's say you wanted to get some data from another server.
+                That server might be experiencing high traffic og be down,
+                and you don't want to run your code without having the data.
+            </p>
+            <p>
+                To handle this, we use <strong>fetch()</strong> which returns a Promise.
+                We can then use <strong>.then()</strong> and <strong>.catch()</strong>
+                to handle the result:
+            </p>
+
+<pre><code>
+fetch("https://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => console.log("users:", data))
+    .catch(error => console.log("error:", error));
+</code></pre>
+
+            <p>
+                This piece of code might look like it runs synchronously, but it doesn't.
+                The <strong>fetch()</strong> function is asynchronous.
+                It starts the network request, and then continues running the rest of your code,
+                while waiting for the response. 
+                When the data comes back, the <strong>.then()</strong> function is triggered.
+            </p>
     </section>
 
 </section>
