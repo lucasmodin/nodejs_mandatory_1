@@ -111,8 +111,23 @@ app.get("/", (req, res) => {
     <section class="topic">
         <h2>Client-Side Rendering</h2>
             <p>
-                
+                In <strong>Client-Side Rendering</strong> the browser first loads a minimal HTML file,
+                and then builds and updates the page using Javascript.
+                The rendering happens in the browser instead of on the server.
             </p>
+
+<pre><code>
+// flow for CSR
+Browser --> GET /friends
+Browser loads JS --> JS fetches data --> JS builds HTML in the browser
+</code></pre>
+
+            <p>
+                Unlike SSR, the browser recieves a mostly empty HTML file
+                that Javascript fills dynamically.
+            </p>
+
+
     </section>
     
         
