@@ -17,7 +17,102 @@
     </section>
 
     <section class="topic">
+        <h2>Server-Side Rendering</h2>
+            <p>
+                As the name states, the <strong>server</strong> builds the HTML for each request,
+                and sends the fully rendered page to the browser. This means the browser can show the content immediately.
+            </p>
 
+<pre><code>
+// flow for SSR
+Browser --> GET /friends --> server
+server fetches data --> renders HTML etc. --> sends to browser
+</code></pre>
+
+            <p>
+                In Express, you can achieve SSR by assembling your page before you send it to the browser.
+                First, you need to create a simple templating engine:
+            </p>
+<pre><code>
+// templatingEngine.js
+import fs from 'fs';
+
+const header = readPage("./public/components/header/header.html");
+const footer = readPage("./public/components/footer/footer.html");
+
+export function constructPage(pageContent, options = {}) {
+    return header
+     .replace('$$TAB_TITLE$$', options.tabTitle || "Portfolio")
+     .replace('$$CSS_LINKS$$', options.cssLinks || "")
+      + pageContent
+      + footer;
+}
+
+export function readPage(path) {
+    return fs.readFileSync(path).toString();
+}
+</code></pre>
+
+            <p>
+                This module reads the HTML file directly from disk using the <strong>fs</strong> module.
+                The <strong>readPage()</strong> function loads a file, and converts it to a string.
+                The <strong>constructPage()</strong> function combines the header, page content and footer into one HTML document.
+            </p>
+
+<pre><code>
+// pagesUtil.js
+import { readPage, constructPage } from './templatingEngine.js';
+
+frontPage = readPage("./public/pages/index.html");
+
+export const frontendPage = constructPage(frontPage, {
+    tabTitle: "Frontpage | Welcome",
+    cssLinks: `
+        &ltlink rel="stylesheet" href="/assets/css/main.css"&gt;
+    `
+});
+</code></pre>
+
+            <p>
+                in pagesUtil.js we use the engine from before to build the <strong>frontendPage</strong>.
+                We read the HTML for the front page, and wrap it with the shared header and footer.
+                This will give us a fully rendered HTML page, that is ready to be sent to the client
+            </p>
+
+<pre><code>
+// app.js
+import { frontendPage } from './util/pagesUtil.js'
+
+app.get("/", (req, res) => {
+    res.send(frontendPage);
+});
+</code></pre>
+
+            <p>
+                Finally, in app.js we simply respond to requests on <strong>"/"</strong> by sending the assembled HTML page.
+            </p>
+            <p>
+                But wait! we're used to sending static files to the client via <code>res.sendFile()</code>,
+                so why don't we use that? That's because <code>res.sendFile()</code> sends a static file from
+                disk as it is. It doesn't allow for inserting dynamic data, change titles or combining components.
+            </p>
+            <p>
+                So why would you use SSR you ask? You get faster initial load time, 
+                since the user doesn't have to wait for Javascript to build the page. 
+                It's also great for SEO (Search Engine Optimatization) since search engines
+                can read the fully rendered HTML page.
+            </p>
+            <p>
+                Now, there downsides to this as with everything. One is higher server load,
+                since the server has to must process and render each page request every time.
+            </p>
+    </section>
+
+    <section class="topic">
+        <h2>Client-Side Rendering</h2>
+            <p>
+                
+            </p>
     </section>
     
         
