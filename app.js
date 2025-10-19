@@ -37,23 +37,12 @@ app.get("/subjects/ssr-csr", (req, res) => {
 });
 
 // ---------- api ------------------
-import { getRecentCommits } from './util/commitsUtil.js';
+import { getRecentGithubActivity } from './util/githubActivity.js';
 
-app.get("/api/commits", async (req, res) => {
-    const commits = await getRecentCommits();
-    res.send({ data: commits });
+app.get("/api/activities", async (req, res) => {
+    const githubActivity = await getRecentGithubActivity();
+    res.send({ data: githubActivity });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 
