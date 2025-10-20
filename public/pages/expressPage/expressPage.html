@@ -18,25 +18,25 @@
             <p>
                 Then import and initialize it in your project:
             </p>
-
+            <section class="code-group">
 <pre><code>
 // app.js
 import express from 'express';
 
 const app = express();
 </code></pre>
-
+            </section>
             <p>
                 Now that Express is initialized, you need to configure the port it should listen on:
             </p>
-
+            <section class="code-group">
 <pre><code>
 // app.js
 app.listen(8080, () => {
     console.log("running on port 8080");
 });
 </code></pre>
-
+            </section>
             <p>
                 You're now up and running with your own web server in a few lines of code, easy peasy.
             </p>
@@ -53,7 +53,7 @@ app.listen(8080, () => {
                 Im not gonna explain them in detail here (see REST page),
                 but here are some examples on how to use them in your app:
             </p>
-
+            <section class="code-group">
 <pre><code>
 // GET
 app.get("/api/friends", (req, res) => {
@@ -61,7 +61,7 @@ app.get("/api/friends", (req, res) => {
     res.send({ data: friends });
 });
 </code></pre>
-
+            </section>
             <p>
                 This route handles a GET request to <code>/api/friends</code>.
                 When the client calls this endpoint, the server will respond with a data object containing the list.
@@ -70,7 +70,7 @@ app.get("/api/friends", (req, res) => {
                 Now, if the client wanted to add a new friend to the list,
                 it would look something like this:
             </p>
-
+            <section class="code-group">
 <pre><code>
 // POST
 app.post("/api/friends", (req, res) => {
@@ -79,7 +79,7 @@ app.post("/api/friends", (req, res) => {
     res.status(201).send({ message: `${newFriend} added` })
 })
 </code></pre>
-
+            </section>
             <p>
                 We use <code>req</code> (request) to access data sent from the client.
                 In this case <code>req.body.name</code> from the request body.
@@ -91,11 +91,11 @@ app.post("/api/friends", (req, res) => {
             <p>
                 Now, for POST request, it is important to include:
             </p>
-
+            <section class="code-group">
 <pre><code>
 app.use(express.json())
 </code></pre>
-
+            </section>
             <p>
                 This allows Express to read JSON data from the request (body parsing).
             </p>
@@ -108,7 +108,7 @@ app.use(express.json())
                 If we wanted to, let's say, get a specific friend from the list,
                 we could include their ID in the URL using a <strong>path variable</strong>.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // path variable example
 app.get("/api/friends/:id", (req, res) => {
@@ -117,6 +117,7 @@ app.get("/api/friends/:id", (req, res) => {
     res.send({ data: foundFriend });
 })
 </code></pre>
+            </section>
             <p>
                 The colon <code>:</code> marks <code>id</code> as a dynamic value.
             </p>
@@ -129,7 +130,7 @@ app.get("/api/friends/:id", (req, res) => {
                 If we wanted to find our friend named John, we could do so by including 
                 <code>Mark</code> in our URL:
             </p>
-
+            <section class="code-group">
 <pre><code>
 // request: /api/friends/?name=mark
 app.get("/api/friends", (req, res) => {
@@ -140,7 +141,7 @@ app.get("/api/friends", (req, res) => {
     res.send({ data: foundFriend });
 });
 </code></pre>
-
+            </section>
             <p>
                 The route will check the <code>name</code> query parameter in the URL,
                 and search the friends list for a match and then return it to the client.
@@ -149,7 +150,7 @@ app.get("/api/friends", (req, res) => {
                 Now, if our friends list didn't have Mark in it, we would be in a bit of a pickle.
                 To handle this, we could add a simple check and return the HTTP status code: <strong>404 Not Found</strong>.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // request: /api/friends/?name=mark
 app.get("/api/friends", (req, res) => {
@@ -165,7 +166,7 @@ app.get("/api/friends", (req, res) => {
     res.send({ data: foundFriend });
 });
 </code></pre>
-
+            </section>
             <p>
                 The <code>res.status</code> let's you send HTTP status codes with your response
             </p>
@@ -180,11 +181,11 @@ app.get("/api/friends", (req, res) => {
             <p>
                 You can serve these directly by using:
             </p>
-
+            <section class="code-group">
 <pre><code>
 app.use(express.static("public"))
 </code></pre>
-
+            </section>
             <p>
                 This tells Express to look for static assets inside your <code>public</code> folder.
             </p>
