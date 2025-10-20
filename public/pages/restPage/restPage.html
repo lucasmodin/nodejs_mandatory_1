@@ -16,7 +16,7 @@
             <p>
                 Before we dive deeper into REST, it is important to understand the anatomy of an URL:
             </p>
-
+            <section class="code-group">
 <pre><code>
 https://www.google.com/search?h1=en&q=pay%20attention
 |             |        |
@@ -24,7 +24,7 @@ https://www.google.com/search?h1=en&q=pay%20attention
 |             └────────── domain
 └──────────────────────── protocol  
 </code></pre>
-
+            </section>
             <p>
                 The <strong>protocol</strong> (http/https) defines how the client communicates with the server.
             </p>
@@ -37,14 +37,14 @@ https://www.google.com/search?h1=en&q=pay%20attention
             <p>
                 The endpoint could look something like this:
             </p>
-
+            <section class="code-group">
 <pre><code>
 /search?h1=en&q=pay%20attention
 |      |______________________|
 |                └ query string
 └───────────────── path
 </code></pre>
-
+            </section>
             <p>
                 The <strong>query</strong> contains query parameters seperated by <code>&amp;</code>
                 and starts with a <code>?</code>.
@@ -52,7 +52,6 @@ https://www.google.com/search?h1=en&q=pay%20attention
             <p>
                 The <strong>path</strong> identifies a specific resource.
             </p>
-
     </section>
 
     <section class="topic">
@@ -61,7 +60,7 @@ https://www.google.com/search?h1=en&q=pay%20attention
                 We follow an ordering of the HTTP methods.
                 This is mainly due to how a user naturally would interact with a webapp.
             </p>
-
+            <section class="code-group">
 <pre><code>
 1. GET    - retrieve data
 2. POST   - create new data
@@ -69,7 +68,7 @@ https://www.google.com/search?h1=en&q=pay%20attention
 4. PATCH  - update parts of existing data
 5. DELETE - remove data
 </code></pre>
-
+            </section>
             <p>
                 If you look at these methods and think: "that seems familiar" - that's because it is.
                 The methods can be directly mapped to the CRUD operations: <strong>Create, Read, Update, Delete</strong>.
@@ -114,7 +113,7 @@ https://www.google.com/search?h1=en&q=pay%20attention
                 In REST we use <strong>nouns</strong>, not verbs.
                 Translated: Resources, NOT actions.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // example of good practice
 GET /api/friends
@@ -122,14 +121,15 @@ GET /api/friends/5
 GET /api/friends/5/posts
 GET /api/friends/5/posts/2
 </code></pre>
-
+            </section>
+            <section class="code-group">
 <pre><code>
 // example of bad practice
 GET  /api/getFriends
 POST /api/createFriend
 PUT  /api/updateFriend/3
-</code></pre>
-
+</code></pre>   
+            </section>
             <p>
                 The idea is, that the endpoint represents a <strong>resource</strong> not an action.
                 But then how do he we show what action we want to perform?
@@ -137,7 +137,7 @@ PUT  /api/updateFriend/3
             <p>
                 We let the <strong>HTTP methods</strong> show intent. GET, POST, PUT etc. describe what we want to do with the resource.
             </p>
-
+            <section class="code-group">
 <pre><code>
 GET    /api/friends
 GET    /api/friends/2
@@ -146,7 +146,7 @@ PUT    /api/friends/2
 PATCH  /api/friends/2
 DELETE /api/friends/2
 </code></pre>
-
+            </section>
             <p>
                 Now, in my earlier example <code>GET /api/friends/5/posts</code> you'll notice that there are <strong>two resources</strong>.
                 There's <strong>friends</strong> and <strong>posts</strong>. Since posts belongs to a specific friend, 
@@ -163,7 +163,7 @@ DELETE /api/friends/2
                 Every response from a REST API includes a status code.
                 The code returned indicate if a specific request has been successfully completed.
             </p>
-
+            <section class="code-group">
 <pre><code>
 1. informational responses (100-199)
 2. successful respones     (200-299)
@@ -171,9 +171,11 @@ DELETE /api/friends/2
 4. client error responses  (400-499)
 5. server error responses  (500-599)
 </code></pre>
-
-            <p>Now, you don't need to know every singe status code, so here are some of the most common:</p>
-
+            </section>
+            <p>
+                Now, you don't need to know every singe status code, so here are some of the most common:
+            </p>
+            <section class="code-group">
 <pre><code>
 200 OK                    - Request succeeded
 201 Created               - Resource created
@@ -186,7 +188,7 @@ DELETE /api/friends/2
 
 500 Internal Server Error - Something went wrong on the server
 </code></pre>
-
+            </section>
             <p>
                 It is generally good practice to return appropriate status codes with your responses.
                 It helps the client understand what happened (and makes debugging A LOT easier).
@@ -204,44 +206,44 @@ DELETE /api/friends/2
                 This is the lowest level. Typically it consists of a single URI (uniform resource identifier)
                 supporting all the CRUD operations. The HTTP method used is <strong>POST</strong>
             </p>
-
+            <section class="code-group">
 <pre><code>     
 /bookingService - POST - retrieve, add/cancel 
                     for destinations/hotels/rooms
 </code></pre>
-
+            </section>
             <h3>Level 1: Resources</h3>
             <p>
                 Level 1 introduces resources and splits the URI into multiple
                 individual URIs. Although, the HTTP methods used is still POST.
             </p>
-
+            <section class="code-group">
 <pre><code>
 /bookingDestination - POST - retrieve dest.
 /bookingReservation - POST - add/cancel res.
 /bookingRooms       - POST - add/cancel req. to res.
 /bookingFeedback    - POST - leave feedback
 </code></pre>
-
+            </section>
             <h3>Level 2: HTTP verbs</h3>
             <p>
                 Level 2 makes use of the HTTP verbs which allows for further specialization
                 of the resource. Each resource now has its own endpoint, and the HTTP method describes the action.
             </p>
-
+            <section class="code-group">
 <pre><code>
 /destinations - GET - retrieve
 /reservations - GET - retrieve
 /reservations - POST - add/cancel
 /rooms        - DELETE - remove
 </code></pre>
-
+            </section>
             <h3>Level 3: Hypermedia Controls</h3>
             <p>
                 This level introduces HATEOAS (Hypermedia As The Engine Of Application).
                 It basically adds links to related resources, so the client can discover what to do next.
             </p>
-
+            <section class="code-group">
 <pre><code>
 {
     "id": 1,
@@ -253,5 +255,6 @@ DELETE /api/friends/2
     }
 }
 </code></pre>
+            </section>
     </section>
 </section>
