@@ -2,12 +2,12 @@
     <section class="intro">
         <h1>Git basics</h1>
             <p class="lead muted">
-                Git is a open source version control system.
-                It allows developers to work on different feature, track changes,
+                Git is an open-source version control system.
+                It allows developers to work on different features, track changes,
                 and collaborate efficiently.
             </p>
 
-            <p>Below are some common git commands that are useful for every project.</p>
+            <p>Below are some common Git commands that are useful for every project.</p>
     </section>
 
     <section class="topic">
@@ -17,8 +17,14 @@
                 A repository is a folder that Git tracks changes in.
             </p>
             <div class="code-group">
-                <pre><code>git init</code></pre>
-                <pre><code>git clone &lturl&gt</code></pre> <!-- &lt and &gt are escape characters-->
+                <div>
+                    <pre><code>git init</code></pre>
+                    <p>Initializes a new Git repository</p>
+                </div>
+                <div>
+                    <pre><code>git clone &lturl&gt</code></pre>
+                    <p>Copies an existing remote repository</p>
+                </div>
             </div>
     </section>
 
@@ -26,27 +32,51 @@
         <h2>Prepare to commit</h2>
             <p>
                 Before saving your changes you need to tell Git which files to include.
-                This is done by using the <strong>staging area</strong>.
+                This is done using the staging area.
             </p>
             <div class="code-group">
-                <pre><code>git add &ltfile&gt</code></pre>
-                <pre><code>git add .</code></pre>
-                <pre><code>git rm &ltfile&gt</code></pre>
-                <pre><code>git reset &ltfile&gt</code></pre>
-                <pre><code>git reset</code></pre>
+                <div>
+                    <pre><code>git add &ltfile&gt</code></pre>
+                    <p>Stages a specific file for the next commit</p>
+                </div>
+                <div>
+                    <pre><code>git add .</code></pre>
+                    <p>Stages all modified files in the project</p>
+                </div>
+                <div>
+                    <pre><code>git rm &ltfile&gt</code></pre>
+                    <p>Removes a file from both your working directory and Git history</p>
+                </div>
+                <div>
+                    <pre><code>git reset &ltfile&gt</code></pre>
+                    <p>Unstages a specific file from the staging area</p>
+                </div>
+                <div>
+                    <pre><code>git reset</code></pre>
+                    <p>Unstages all files currently staged for commit</p>
+                </div>
             </div>
     </section>
 
     <section class="topic">
         <h2>Make commits</h2>
             <p>
-                A <strong>commit</strong> is like a snapshot of your code.
-                It stores all staged changes with a short message describing what work was done.
+                A commit is like a snapshot of your code.
+                It stores all staged changes with a short message describing what was done.
             </p>
             <div class="code-group">
-                <pre><code>git commit</code></pre>
-                <pre><code>git commit -m 'message'</code></pre>
-                <pre><code>git commit -am 'message'</code></pre>
+                <div>
+                    <pre><code>git commit</code></pre>
+                    <p>Opens an editor to write a commit message</p>
+                </div>
+                <div>
+                    <pre><code>git commit -m "message"</code></pre>
+                    <p>Creates a commit with a short message</p>
+                </div>
+                <div>
+                    <pre><code>git commit -am "message"</code></pre>
+                    <p>Stages and commits all tracked files</p>
+                </div>
             </div>
     </section>
 
@@ -54,14 +84,29 @@
         <h2>Branch</h2>
             <p>
                 Branches let you work on new features or fixes
-                without changing the main code (usually called <strong>main</strong> or <strong>master</strong>).
+                without changing the main code (usually called main or master).
             </p>
             <div class="code-group">
-                <pre><code>git branch</code></pre>
-                <pre><code>git branch &ltname&gt</code></pre>
-                <pre><code>git checkout &ltname&gt</code></pre>
-                <pre><code>git checkout -b &ltname&gt</code></pre>
-                <pre><code>git merge &ltname&gt</code></pre>
+                <div>
+                    <pre><code>git branch</code></pre>
+                    <p>Lists all existing branches</p>
+                </div>
+                <div>
+                    <pre><code>git branch &ltname&gt</code></pre>
+                    <p>Creates a new branch</p>
+                </div>
+                <div>
+                    <pre><code>git checkout &ltname&gt</code></pre>
+                    <p>Switches to an existing branch</p>
+                </div>
+                <div>
+                    <pre><code>git checkout -b &ltname&gt</code></pre>
+                    <p>Creates and switches to a new branch</p>
+                </div>
+                <div>
+                    <pre><code>git merge &ltname&gt</code></pre>
+                    <p>Merges another branch into the current one</p>
+                </div>
             </div>
             <p>
                 Use <strong>git branch</strong> to list branches,
@@ -74,10 +119,17 @@
         <h2>Push</h2>
             <p>
                 After committing your changes, you can upload them
-                to a remote repository like GitHub using <strong>push</strong>.
+                to a remote repository using push.
             </p>
             <div class="code-group">
-                <pre><code>git push</code></pre>
-                <pre><code>git push origin &ltbranch&gt</code></pre>
-        </section>
+                <div>
+                    <pre><code>git push</code></pre>
+                    <p>Uploads your commits to the remote repository</p>
+                </div>
+                <div>
+                    <pre><code>git push origin &ltbranch&gt</code></pre>
+                    <p>Pushes a specific branch to the remote repository</p>
+                </div>
+            </div>
+    </section>
 </section>

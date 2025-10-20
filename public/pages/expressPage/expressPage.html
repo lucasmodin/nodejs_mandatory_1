@@ -173,6 +173,59 @@ app.get("/api/friends", (req, res) => {
     </section>
 
     <section class="topic">
+        <h2>Routers (more routes)</h2>
+            <p>
+                When your app grows, so will your routes. Instead of putting them all in one file,
+                you can split them up usiong <strong>Express Routers</strong>.
+                This will keep your code more organized and avoids long messy files.
+            </p>
+            <section class="code-group">
+<pre><code>
+// friendsRouter.js
+import { Router } from "express";
+const router = Router();
+
+router.get("/", (req, res) => {
+    res.send({ data: ["John", "Mark", "Oliver"] });
+});
+
+router.post("/", (req, res) => {
+    res.send({ message: "friend added" });
+});
+
+export default router;
+</code></pre>
+            </section>
+            <p>
+                And in your app.js:
+            </p>
+            <section class="code-group">
+<pre><code>
+// app.js
+import express from "express";
+import friendsRouter from "./routes/friendsRouter.js";
+
+const app = express();
+app.use(express.json());
+
+// mount the router
+app.use("/api/friends", friendsRouter);
+
+app.listen(8080, () => {
+    console.log("Server running on port 8080");
+});
+</code></pre>
+            </section>
+            <p>
+                Now, all the routes inside <strong>friendsRouter</strong>
+                will automatically be prefixed with <strong>/api/friends</strong>
+            </p>
+            <p>
+                This makes your code more modular and clean.
+            </p> 
+    </section>
+
+    <section class="topic">
         <h2>Static Files</h2>
             <p>
                 Static files are files that don't change when your app runs.
@@ -188,6 +241,25 @@ app.use(express.static("public"))
             </section>
             <p>
                 This tells Express to look for static assets inside your <code>public</code> folder.
+            </p>
+            <p>
+                If you're using <strong>CommonJS</strong>, you can get the absolute path to your files
+                by simply using <code>__dirname</code>. 
+            </p>
+            <p>
+                It wil give you the absolute path to the folder where the current file is located.
+                So when you expose an endpoint: 
+            </p>
+            <section class="code-group">
+<pre><code>
+// CommonJS
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/index.html");
+});
+</code></pre>
+            </section>
+            <p>
+                The server always knows where your files are located.
             </p>
     </section>
 </section>

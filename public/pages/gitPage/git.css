@@ -47,35 +47,33 @@
   margin-top: var(--space-4);
 }
 
-/* === Compact code group for Git commands === */
+/* === Code group layout for Git commands === */
 .code-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  margin-top: var(--space-3);
-  margin-bottom: var(--space-3);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: var(--space-4);
 }
 
-/* Small code “pills” instead of full-width blocks */
-.code-group pre {
+/* Each code+text pair */
+.code-group > div {
   background: #1e1e1e;
   color: #e0e0e0;
-  border-radius: 6px;
+  border-radius: 8px;
+  padding: .75rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+  transition: background .15s ease, transform .15s ease;
+}
+
+/* Code block styling */
+.code-group pre {
+  background: none;
+  color: #e0e0e0;
+  margin: 0;
   font-family: ui-monospace, Menlo, Monaco, Consolas, "Courier New", monospace;
   font-size: .9rem;
   line-height: 1.4;
-  padding: .4rem .75rem;
-  box-shadow: 0 1px 2px rgba(0,0,0,.2);
-  display: inline-block;
   white-space: nowrap;
-  flex: 0 0 auto;              /* Don’t stretch */
-}
-
-/* Optional: a subtle hover effect */
-.code-group pre:hover {
-  background: #2a2a2a;
-  transform: translateY(-1px);
-  transition: all .15s ease;
 }
 
 /* Code text */
@@ -86,9 +84,19 @@ pre code {
   margin: 0;
 }
 
+/* Description below each command */
+.code-group p {
+  font-size: .85rem;
+  color: #bdbdbd;
+  margin-top: .35rem;
+  line-height: 1.4;
+}
+
 /* Mobile adjustments */
 @media (max-width: 640px) {
   .git-page { padding: var(--space-6) var(--space-4); }
   .git-page .intro, .topic { padding: var(--space-4); }
-  .code-group { justify-content: center; }
+  .code-group {
+    grid-template-columns: 1fr;
+  }
 }

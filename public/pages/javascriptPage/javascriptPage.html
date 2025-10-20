@@ -258,7 +258,7 @@ console.log(index); // 2
                 rather than traditionally looping through the array with <strong>for</strong>.
                 Loop methods are more readable, safer and easier to maintain. 
             </p>
-            <h3>8 reason to use loop methods</h3>
+            <h3>8 reasons to use loop methods</h3>
                 <ol>
                     <li><strong>Brevity</strong> fewer lines of code for the same task.</li>
                     <li><strong>Clarity</strong> communicates intent directly</li>
@@ -269,6 +269,52 @@ console.log(index); // 2
                     <li><strong>Shorter and more maintainable/readable</strong></li>
                     <li><strong>Non-mutating </strong> methods like map and filter return new a array instead of mutating original list</li>
                 </ol>
+    </section>
+
+    <section class="topic">
+        <h2>Dates in Javascript</h2>
+            <p>
+                Javascript has a built-in <strong>Date</strong> object that allows you to work with dates and times.
+                You can use it to get the current time, day, or month:
+            </p>
+            <section class="code-group">
+<pre><code>
+// get the current date and time
+console.log(new Date()); // result: 2025-10-20T18:45:00.000Z
+</code></pre>
+            </section>
+            <p>
+                If we wanted to get the current month (with a string representation)
+                we could do something like this:
+            </p>
+            <section class="code-group">
+<pre><code>
+const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+];
+
+const currentMonth = months[new Date().getMonth()];
+console.log(currentMonth); // output: "October"
+</code></pre>
+            </section>
+            <p>
+                On the other hand, we can use <strong>toLocaleDateString()</strong> to format the date automatically,
+                based on language and region:
+            </p>
+            <section class="code-group">
+<pre><code>
+const monthName = new Date().toLocaleDateString("en-uk", { month: "long" });
+const dayName = new Date().toLocaleDateString("en-uk", { weekday: "long" });
+
+console.log(monthName, dayName); // output: "October Monday"
+</code></pre>
+            </section>
+            <p>
+                <code>{ month: "long" }</code> says you want the month in long format (October).
+                <code>{ weekday: "long" }</code> says you want the weekday in long format (Monday).
+                And together, they let you display readable localized dates without having to build your own arrays.
+            </p>
     </section>
 
     <section class="topic">
