@@ -1,10 +1,16 @@
 import { githubEventToActivity } from "./githubEventToActivity.js";
 const USER = process.env.GITHUB_USER || "lucasmodin";
+const TOKEN = process.env.GITHUB__TOKEN || "";
 
 export async function getRecentGithubActivity(limit = 5) {
     const url = `https://api.github.com/users/${USER}/events/public`;
 
-    return fetch(url)
+    const headers = {}
+    if (TOKEN) {
+        headers["Authorization"] = `Bearer ${TOKEN}`;
+    }
+    
+    return fetch(url, { headers })
         .then(res => {
             if (!res.ok) {
                 throw new Error(`github http code: ${res.status} ${res.statusText}`);
