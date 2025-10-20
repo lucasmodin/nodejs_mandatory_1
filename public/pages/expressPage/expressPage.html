@@ -277,15 +277,31 @@ app.get("/", (req, res) => {
 public/
 ├─ assets/
 |   ├─ css/
-|   ├─
-|   └─
-|
-|
-|
-└
+|   ├─ js/
+|   └─ images/
+├─ pages/
+|   └─ index.html
+└─ components/
+    ├─ header.html
+    └─ footer.html
 </code></pre>
-
             </section>
+            <p>
+                As we have mentioned before (in serving static files),
+                this folder can be made publicly available using:
+            </p>
+            <section class="code-group">
+<pre><code>
+app.use(express.static("public"));
+</code></pre>
+            </section>
+            <p>
+                Now these pages can be access from the browser at <code>/pages/index.html</code>.
+                Browsers also cache these files - this means the site loads quicker because the server
+                doesn't have to do the extra work every time.
+            </p>
+
+            
 
     </section>
 </section>
