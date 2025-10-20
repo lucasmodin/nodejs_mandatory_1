@@ -212,6 +212,9 @@ button:focus-visible,
     height: 100px;
   }
 
+
+
+
 /* Responsive: stack columns on small screens */
 @media (max-width: 768px) {
   .index-page {

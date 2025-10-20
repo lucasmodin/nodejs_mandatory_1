@@ -1,5 +1,5 @@
-<section class="js-page">
-    <section class="intro">
+<section class="js-page container">
+    <section class="intro stack">
         <h1>Javascript</h1>
             <p class="lead muted">
                 Javascript is a fun programming language.
@@ -110,22 +110,23 @@ willDie = false; // will throw a type error
             <p>
                 Javascript has two ways to compare values: 
             </p>
+            <section class="code-group">
 <pre><code>
 == // loose equality
 
 === // strict equality
 </code></pre>
-
+            </section>
             <p>
                 <strong>Loose equality</strong> tries to convert to the same data type before comparing,
                 while <strong>Strict equality</strong> compares both the type and value.
             </p>
-
+            <section class="code-group">
 <pre><code>
 "3" == 3 //true
 "3" === 3 //false
 </code></pre>
-
+            </section>
             <p>
                 Don't confuse this with Java's syntax. Always use strict equality to avoid unexpected results.
             </p>
@@ -137,10 +138,11 @@ willDie = false; // will throw a type error
                 Some values are automatically considered <strong>falsy</strong>
                 meaning they behave like <strong>false</strong> in conditions:
             </p>
+            <section class="code-group">
 <pre><code>
 false, 0, "", null, undefined, NaN
 </code></pre>
-
+            </section>
             <p>
                 Everything else is considered <strong>truthy</strong>.
                 This is important when writing for example <strong>if</strong> statements,
@@ -307,13 +309,14 @@ console.log(index); // 2
                 We can then use <strong>.then()</strong> and <strong>.catch()</strong>
                 to handle the result:
             </p>
-
+            <section class="code-group">
 <pre><code>
 fetch("https://jsonplaceholder.typicode.com/users")
     .then(response => response.json())
     .then(data => console.log("users:", data))
     .catch(error => console.log("error:", error));
 </code></pre>
+            </section>
             <p>
                 This piece of code might look like it runs synchronously, but it doesn't.
                 The <strong>fetch()</strong> function is asynchronous.
