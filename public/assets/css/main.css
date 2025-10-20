@@ -60,7 +60,7 @@ h1 { font-size: 1.8rem; margin-bottom: var(--space-4); }
 h2 { font-size: 1.4rem; margin-bottom: var(--space-3); }
 h3 { font-size: 1.2rem; margin-bottom: var(--space-2); }
 
-a[href] { color: var(--brand); text-decoration: underline; text-underline-offset: 2px; }
+a[href] { color: var(--brand); }
 a[href]:hover { opacity: .9; }
 
 header {
@@ -209,6 +209,19 @@ button:focus-visible,
   display: block;
   margin-bottom: .25rem;
   color: var(--text);
+}
+
+.activity-heading {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.github-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--brand);
 }
 
 .profile {
