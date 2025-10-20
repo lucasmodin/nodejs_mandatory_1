@@ -1,4 +1,4 @@
-/* === Subject page layout (JS page) === */
+
 .js-page {
   display: grid;
   grid-template-columns: minmax(0, 1fr);

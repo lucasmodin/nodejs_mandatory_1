@@ -1,0 +1,111 @@
+
+.node-page {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-4, 1rem);
+  padding: var(--space-8) var(--space-4);
+}
+
+/* Intro section */
+.node-page .intro {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5, 1.25rem);
+  width: 100%;
+  margin-inline: auto;
+}
+
+/* Topic cards */
+.topic {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6);
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  width: 100%;
+  margin-inline: auto;
+}
+
+.topic + .topic {
+  margin-top: var(--space-8);
+}
+
+.topic h2 {
+  border-bottom: 2px solid var(--border);
+  padding-bottom: .25rem;
+  margin-bottom: var(--space-4);
+}
+
+/* Paragraph rhythm inside topics */
+.topic p + p,
+.topic ul,
+.topic ol,
+.topic pre,
+.topic .code-group {
+  margin-top: var(--space-4);
+}
+
+/* Code groups */
+.code-group {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Code block styling */
+pre {
+  background: #1e1e1e;
+  color: #e0e0e0;
+  border-radius: 8px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: .95rem;
+  line-height: 1.5;
+  padding: 1.1rem 1.4rem;
+  overflow-x: auto;
+  text-align: left;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+pre code {
+  display: block;
+  white-space: pre;
+  tab-size: 2;
+  line-height: 1.5;
+  padding-top: 0;
+  margin-top: 0;
+  transform: translateY(-1px);
+}
+
+/* Scrollbars */
+pre::-webkit-scrollbar { height: 8px; }
+pre::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-thumb:hover { background: #666; }
+
+/* Mobile adjustments */
+@media (max-width: 640px) {
+  .express-page {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  pre {
+    font-size: .9rem;
+    padding: .8rem;
+  }
+
+  .express-page .intro,
+  .topic {
+    padding: var(--space-4);
+  }
+}

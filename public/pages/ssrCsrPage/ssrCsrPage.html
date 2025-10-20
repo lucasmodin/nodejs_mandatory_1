@@ -1,4 +1,4 @@
-<section class="ssr-csr-page">
+<section class="ssr-csr-page container">
     <section class="intro">
         <h1>SSR &amp; CSR</h1>
             <p>
@@ -22,17 +22,18 @@
                 As the name states, the <strong>server</strong> builds the HTML for each request,
                 and sends the fully rendered page to the browser. This means the browser can show the content immediately.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // flow for SSR
 Browser --> GET /friends --> server
 server fetches data --> renders HTML etc. --> sends to browser
 </code></pre>
-
+            </section>
             <p>
                 In Express, you can achieve SSR by assembling your page before you send it to the browser.
                 First, you need to create a simple templating engine:
             </p>
+            <section class="code-group">
 <pre><code>
 // templatingEngine.js
 import fs from 'fs';
@@ -52,13 +53,13 @@ export function readPage(path) {
     return fs.readFileSync(path).toString();
 }
 </code></pre>
-
+            </section>
             <p>
                 This module reads the HTML file directly from disk using the <strong>fs</strong> module.
                 The <strong>readPage()</strong> function loads a file, and converts it to a string.
                 The <strong>constructPage()</strong> function combines the header, page content and footer into one HTML document.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // pagesUtil.js
 import { readPage, constructPage } from './templatingEngine.js';
@@ -72,13 +73,13 @@ export const frontendPage = constructPage(frontPage, {
     `
 });
 </code></pre>
-
+            </section>
             <p>
                 in pagesUtil.js we use the engine from before to build the <strong>frontendPage</strong>.
                 We read the HTML for the front page, and wrap it with the shared header and footer.
                 This will give us a fully rendered HTML page, that is ready to be sent to the client
             </p>
-
+            <section class="code-group">
 <pre><code>
 // app.js
 import { frontendPage } from './util/pagesUtil.js'
@@ -87,7 +88,7 @@ app.get("/", (req, res) => {
     res.send(frontendPage);
 });
 </code></pre>
-
+            </section>
             <p>
                 Finally, in app.js we simply respond to requests on <strong>"/"</strong> by sending the assembled HTML page.
             </p>
@@ -115,18 +116,18 @@ app.get("/", (req, res) => {
                 and then builds and updates the page using Javascript.
                 The rendering happens in the browser instead of on the server.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // flow for CSR
 Browser --> GET /friends
 Browser loads JS --> JS fetches data --> JS builds HTML in the browser
 </code></pre>
-
+            </section>
             <p>
                 Unlike SSR, the browser recieves a mostly empty HTML file
                 that Javascript fills dynamically.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // index.html
 &ltbody&gt
@@ -134,11 +135,11 @@ Browser loads JS --> JS fetches data --> JS builds HTML in the browser
     &ltscript src="/assets/js/friends.js"&gt&lt/script&gt
 &lt/body&gt
 </code></pre>
-
+            </section>
             <p>
                 And in the javascript file <code>friends.js</code>:
             </p>
-
+            <section class="code-group">
 <pre><code>
 fetch("/api/friends")
     .then(res =&gt res.json())
@@ -151,7 +152,7 @@ fetch("/api/friends")
         });
     });
 </code></pre>
-
+            </section>
             <p>
                 Here, the HTML file is loaded once, and the Javascript fetches
                 the data from the server. The the DOM elements are created and data injected dynamically.
@@ -174,5 +175,4 @@ fetch("/api/friends")
                 Use CSR when you are building dynamic web apps with heavy user interaction.
             </p>
     </section>
-
 </section>
