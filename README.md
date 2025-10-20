@@ -1,4 +1,4 @@
-# Lucas Modin – Node.js Portfolio
+# Node.js Portfolio
 
 A small **server-side rendered (SSR)** portfolio site built with **Node.js** and **Express**.  
 It showcases my learning journey in the course **Fullstack with Node.js** and includes pages about Git, JavaScript, Node.js, Express, REST, and SSR/CSR concepts.  
