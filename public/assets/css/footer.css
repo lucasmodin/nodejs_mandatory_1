@@ -8,3 +8,21 @@
     bottom: 0;
     width: 100%;
 }
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.social-links img:hover {
+  opacity: 1;
+}

@@ -1,9 +1,11 @@
 function createActivityItem({ repo, title, url, date }) {
   const li = document.createElement("li");
   li.innerHTML = `
-    <a href="${url}" target="_blank"><strong>${repo}</strong></a><br>
-    <span>${title}</span><br>
-    <small class="muted">${date}</small>
+    <a class="activity-item" href="${url}">
+      <strong>${title}</strong><br>
+      <span class="muted">${repo}</span><br>
+      <small class="muted">${date}</small>
+    </a>
   `;
   return li;
 }

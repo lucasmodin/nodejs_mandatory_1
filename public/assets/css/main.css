@@ -178,17 +178,37 @@ button:focus-visible,
   gap: var(--space-3);
 }
 
+/* Make the whole activity card clickable */
 #activity-list li {
+  padding: 0; /* let the link handle padding */
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+#activity-list a.activity-item {
+  display: block;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: var(--space-4);
+  color: inherit;
+  text-decoration: none;
   box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  transition: border-color .15s ease, background .2s ease, transform .1s ease;
 }
 
-#activity-list li a strong { text-decoration: none; }
-#activity-list li:hover {
+#activity-list a.activity-item:hover {
   border-color: color-mix(in oklab, var(--brand) 35%, var(--border));
+  background: color-mix(in oklab, var(--surface) 90%, var(--brand) 10%);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+#activity-list a.activity-item strong {
+  display: block;
+  margin-bottom: .25rem;
+  color: var(--text);
 }
 
 .profile {
