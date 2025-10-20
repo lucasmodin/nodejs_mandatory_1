@@ -9,7 +9,7 @@
         "svelte": "^5.39.13"
     },
     "scripts": {
-        "dev": "cross-env PORT=9090 nodemon server.js",
+        "dev": "cross-env PORT=9090 nodemon app.js",
         "prod": "node app.js"
     },
     "devDependencies": {

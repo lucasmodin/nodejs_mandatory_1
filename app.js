@@ -4,6 +4,7 @@ import path from 'path';
 const app = express();
 app.use(express.static("public"));
 
+// ---------- vercel ---------------
 
 // ---------- pages ----------------
 import { frontendPage, gitFrontendPage, javascriptFrontendPage, nodeFrontendPage, expressFrontendPage, restFrontendPage, ssrCsrFrontendPage } from './util/pagesUtil.js';
