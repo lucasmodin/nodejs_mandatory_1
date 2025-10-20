@@ -1,6 +1,6 @@
 import { githubEventToActivity } from "./githubEventToActivity.js";
 const USER = process.env.GITHUB_USER || "lucasmodin";
-const TOKEN = process.env.GITHUB__TOKEN || "";
+const TOKEN = process.env.GITHUB_TOKEN || "";
 
 export async function getRecentGithubActivity(limit = 5) {
     const url = `https://api.github.com/users/${USER}/events/public`;
