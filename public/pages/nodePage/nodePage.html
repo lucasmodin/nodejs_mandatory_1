@@ -44,7 +44,7 @@
                 The <code>package.json</code> is the heart of every Node project.
                 It tells npm which packages to install and defines the scripts you can run with simple commands.
             </p>
-
+            <section class="code-group">
 <pre><code>{
     "name": "node-demo",
     "version": "0.0.1",
@@ -60,7 +60,7 @@
     }
 }
 </code></pre>
-
+            </section>
             <p>
                 Once defined, use <code>npm install</code> or the shorthand <code>npm i</code>
                  to install the projects dependencies.
@@ -96,12 +96,12 @@
             <p>
                 Once installed, you can add a <code>dev</code> script to your package.json:
             </p>
-
+            <section class="code-group">
 <pre><code>"scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
 }</code></pre>
-
+            </section>
             <p>
                 Now, you can simply run: <code>npm run dev</code>
             </p>
@@ -124,7 +124,7 @@
                 CommonJS is the original Node.js module system and it uses <code>require()</code> to import,
                 and <code>module.exports</code> to export code.
             </p>
-
+            <section class="code-group">
 <pre><code>
 // iLoveJs.js
 function sayILoveJs() {
@@ -137,11 +137,11 @@ const { sayILoveJs } = require('./iLoveJs.js');
 
 sayILoveJs();
 </code></pre>
-
+            </section>
             <p>
                 On the other hand, ES Modules uses <code>import</code> and <code>export</code> instead
             </p>
-
+            <section class="code-group">
 <pre><code>
 // iLoveJs.js
 export function sayILoveJs() {
@@ -153,7 +153,7 @@ import { sayILoveJs } from './iLoveJs'
 
 sayILoveJs();
 </code></pre>
-
+            </section>
             <p>
                 Now, i know what you're thinking: if they they're doing the same thing, why have two different ways to do it?
             </p>
@@ -180,19 +180,19 @@ sayILoveJs();
             <p>
                 In Node.js there are several ways to do this. You could do it natively with <code>process.env</code>
             </p>
-
+            <section class="code-group">
 <pre><code>
     const API_KEY = process.env.YOUR_API_KEY;
 </code></pre>
-
+            </section>
             <p>
                 And then you define these in your terminal:
             </p>
-
+            <section class="code-group">
 <pre><code>
     $env:YOUR_API_KEY="efgh12" node app.js
 </code></pre>
-
+            </section>
             <p>The other way is to use a library like <code>dotenv</code>, but I won't elaborate further on this.</p>
     </section>
 
@@ -202,18 +202,16 @@ sayILoveJs();
                 Node.js comes with built in modules that you can use without installing anything.
                 This includes <code>fs</code> (file system) and <code>path</code> (file paths).
             </p>
-
+            <section class="code-group">
 <pre><code>
 // reading a file
 import fs from 'fs';
 
 const data = fs.readFileSync("./components/header.html").toString();
 </code></pre>
-
+            </section>
             <p>
                 This code reads the content of the file, and converts it to a string.
             </p>
-
     </section>
-
 </section>
